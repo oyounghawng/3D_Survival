@@ -1,0 +1,52 @@
+{
+  "levelExps": [
+    {
+      "Game_Lv": 1,
+      "Game_Lv_Exp": 0
+    },
+    {
+      "Game_Lv": 2,
+      "Game_Lv_Exp": 60
+    },
+    {
+      "Game_Lv": 3,
+      "Game_Lv_Exp": 80
+    },
+    {
+      "Game_Lv": 4,
+      "Game_Lv_Exp": 100
+    },
+    {
+      "Game_Lv": 5,
+      "Game_Lv_Exp": 120
+    },
+    {
+      "Game_Lv": 6,
+      "Game_Lv_Exp": 100
+    },
+    {
+      "Game_Lv": 7,
+      "Game_Lv_Exp": 130
+    },
+    {
+      "Game_Lv": 8,
+      "Game_Lv_Exp": 160
+    },
+    {
+      "Game_Lv": 9,
+      "Game_Lv_Exp": 190
+    },
+    {
+      "Game_Lv": 10,
+      "Game_Lv_Exp": 150
+    },
+    {
+      "Game_Lv": 11,
+      "Game_Lv_Exp": 200
+    },
+    {
+      "Game_Lv": 12,
+      "Game_Lv_Exp": 250
+    }
+  ]
+}
