@@ -37,5 +37,4 @@ public class InputController : InputHandler
         Vector2 lookPos = context.ReadValue<Vector2>();
         CallLookEvent(lookPos);
     }
-
 }

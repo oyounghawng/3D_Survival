@@ -35,7 +35,7 @@ public class PlayerBehaviour : EntityBehaviour
         inputHandler.OnRunEvent += GetRunEvent;
         inputHandler.OnJumpEvent += Jump;
         inputHandler.OnLookEvent += GetLookEvent;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     #region EventCallbackMethod
