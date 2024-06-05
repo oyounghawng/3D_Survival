@@ -29,6 +29,6 @@ public class UI_BuildSlot : UI_Base
     public void BuildItem(PointerEventData evt)
     {
         //데이터를 가져와서 아이템 프리팹 경로를 받아온다.
-        Managers.Resource.Instantiate("Build/WallPreview");
+        GameObject go = Managers.Resource.Instantiate("Build/WallPreview");
     }
 }

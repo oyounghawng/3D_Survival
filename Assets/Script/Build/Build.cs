@@ -10,34 +10,41 @@ public class Build : MonoBehaviour
     private Vector3 position;
 
     public LayerMask layerMask;
-    private Vector3 offset;
     private bool canBuild = true;
-
+    Vector3 hitCubePos;
     void Update()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 100f, layerMask))
         {
+            /*
+            if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Water"))
+            {
+                canBuild = false;
+                GetComponent<MeshRenderer>().material.color = Color.red;
+                return;
+            }
+            */
+
             Vector3 InstantiatedCubsPos = Vector3.zero;
             if (hit.transform.CompareTag("Ground"))
             {
-                Vector3 hitCubePos = hit.point;
-                hitCubePos.y += hit.transform.GetComponent<BoxCollider>().size.y / 2f;
+                float height = GetComponent<BoxCollider>().size.y / 2f;
+                Vector3 SurfaceVec = hit.normal * height; // 보정치 필요
+                hitCubePos = hit.point + SurfaceVec;
                 this.gameObject.transform.position = hitCubePos;
                 InstantiatedCubsPos = hitCubePos;
             }
-            else if(hit.transform.CompareTag("Wall"))
+            else if (hit.transform.CompareTag("Wall"))
             {
                 Vector3 SurfaceVec = hit.normal;
-                Vector3 hitCubePos = hit.transform.position;
+                hitCubePos = hit.transform.position;
                 InstantiatedCubsPos = SurfaceVec + hitCubePos;
                 this.gameObject.transform.position = InstantiatedCubsPos;
                 GetComponent<MeshRenderer>().material.color = Color.gray;
                 canBuild = true;
             }
-
-
             if (Input.GetMouseButtonDown(0) && canBuild)
             {
                 Destroy(this.gameObject);
@@ -46,33 +53,19 @@ public class Build : MonoBehaviour
         }
     }
 
-
-    private void OnCollisionStay(Collision collision)
-    {
-        foreach(ContactPoint contact in collision.contacts)
-        {
-            if (contact.otherCollider.CompareTag("Wall"))
-            {
-                canBuild = false;
-                return;
-            }
-        }
-        canBuild = true;
-    }
-
-    /*
     private void OnTriggerStay(Collider other)
     {
+        
         if (other.gameObject.CompareTag("Wall"))
         {
             GetComponent<MeshRenderer>().material.color = Color.red;
-            IsBuild = false;
+            canBuild = false;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         GetComponent<MeshRenderer>().material.color = Color.gray;
-        IsBuild = true;
+        canBuild = true;
     }
-    */
+
 }
