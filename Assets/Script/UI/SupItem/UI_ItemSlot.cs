@@ -21,6 +21,5 @@ public class UI_ItemSlot : UI_Base
     {
         Bind<Image>(typeof(Images));
         Bind<Button>(typeof(Buttons));
-
     }
 }

@@ -7,7 +7,7 @@ public class PlayerBehaviour : EntityBehaviour
     private Vector2 moveDirection;
     private UI_Conditions conditions;
 
-    // ÃßÈÄ¿¡ µ¥ÀÌÅÍ Å×ÀÌºíÀ» ÀÌ¿ëÇØ¼­ °ü¸®ÇÏ´øÁö, µû·Î csv³ª jsonÀ¸·Î °ü¸®ÇÏ´Â ¹æ¹ý Ã£¾ÆºÁ¾ß ÇÒµí.
+    // ï¿½ï¿½ï¿½Ä¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ csvï¿½ï¿½ jsonï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ Ã£ï¿½Æºï¿½ï¿½ï¿½ ï¿½Òµï¿½.
     [Header("JumpState")]
     [SerializeField] [Range(0f, 10f)] private float jumpPower = 5f;
     [SerializeField] [Range(0f, 2f)] private float jumpRayLength = 1.2f;

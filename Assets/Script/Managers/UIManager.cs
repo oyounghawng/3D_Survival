@@ -96,6 +96,13 @@ public class UIManager
         return popup;
     }
 
+    public void TogglePopupUI<T>() where T : UI_Popup
+    {
+        T popup = FindPopup<T>();
+        if (popup != null)
+            FindPopup<T>().gameObject.SetActive(!FindPopup<T>().gameObject.activeSelf);
+    }
+
 
     public T FindPopup<T>() where T : UI_Popup
     {
