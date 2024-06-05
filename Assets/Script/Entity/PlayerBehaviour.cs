@@ -78,7 +78,7 @@ public class PlayerBehaviour : EntityBehaviour
         }
 
         body.AddForce(transform.up * jumpPower, ForceMode.Impulse);
-        UseStamina();
+        UseStamina(jumpStamina);
     }
 
     private bool isGrounded()
@@ -119,9 +119,9 @@ public class PlayerBehaviour : EntityBehaviour
         return conditions.Get(ConditionType.Stamina).isZero();
     }
 
-    private void UseStamina()
+    private void UseStamina(float value)
     {
-        conditions.Get(ConditionType.Stamina).Substract(jumpStamina);
+        conditions.Get(ConditionType.Stamina).Substract(value);
     }
 
 }
