@@ -7,13 +7,13 @@ public class InputController : InputHandler
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Performed)
         {
             isMove = true;
         }
         else if (context.phase == InputActionPhase.Canceled)
-        { 
-            isMove = false; 
+        {
+            isMove = false;
         }
 
         CallMoveEvent(context.ReadValue<Vector2>());
@@ -21,10 +21,7 @@ public class InputController : InputHandler
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Performed)
-        {
-            CallJumpEvent();
-        }
+        CallJumpEvent();
     }
 
     public void OnRun(InputAction.CallbackContext context)
@@ -37,4 +34,6 @@ public class InputController : InputHandler
         Vector2 lookPos = context.ReadValue<Vector2>();
         CallLookEvent(lookPos);
     }
+
+    
 }
