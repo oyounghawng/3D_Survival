@@ -18,8 +18,6 @@ public class PlayerBehaviour : EntityBehaviour
     private float curXRot;
     private Vector2 lookDirection;
 
-
-
     [Header("Gizmos")]
     [SerializeField] private bool debugMode;
 

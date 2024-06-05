@@ -4,16 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using Unity.VisualScripting;
 
 public class UI_Inventory : UI_Popup
 {
     enum GameObjects
     {
-        ItemBag
+        ItemBag,
+        Equip,
+        ExitBtn,
+        DescPannel
     }
     enum Buttons
     {
-        BackBtn
+        ExitBtn
     }
     enum Images
     {
@@ -35,7 +39,9 @@ public class UI_Inventory : UI_Popup
         Bind<Image>(typeof(Images));
 
         SetInventorySlot();
-        GetButton((int)Buttons.BackBtn).gameObject.BindEvent(OnCloseButton);
+        GetButton((int)Buttons.ExitBtn).gameObject.BindEvent(OnCloseButton);
+//        Managers.UI.ShowPopupUI<UI_Inventory>("UI_Inventory");
+//        Managers.UI.TogglePopupUI<UI_Inventory>();
     }
 
     void SetInventorySlot()
@@ -54,6 +60,11 @@ public class UI_Inventory : UI_Popup
 
     void OnCloseButton(PointerEventData evt)
     {
-        Managers.UI.ClosePopupUI();
+        Managers.UI.TogglePopupUI<UI_Inventory>();
+    }
+
+    void AddItem(ItemBase item)
+    {
+
     }
 }

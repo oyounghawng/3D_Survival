@@ -17,6 +17,11 @@ public class ItemBase : ScriptableObject
     [Header("Stacking")]
     public bool canStack;
     public int maxStackAmount;
+
+    public void OnInteract()
+    {
+        
+    }
 }
 public enum ItemType
 {

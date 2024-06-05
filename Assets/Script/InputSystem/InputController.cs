@@ -37,4 +37,13 @@ public class InputController : InputHandler
         Vector2 lookPos = context.ReadValue<Vector2>();
         CallLookEvent(lookPos);
     }
+
+    public void OnInventory(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started)
+        {
+            if(Managers.UI.FindPopup<UI_Inventory>() != null)
+                Managers.UI.TogglePopupUI<UI_Inventory>();
+        }
+    }
 }
