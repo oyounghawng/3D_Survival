@@ -5,18 +5,23 @@ public class PlayerBehaviour : EntityBehaviour
 {
     private InputHandler inputHandler;
     private Vector2 moveDirection;
+    private UI_Conditions conditions;
 
+    // ���Ŀ� ������ ���̺��� �̿��ؼ� �����ϴ���, ���� csv�� json���� �����ϴ� ��� ã�ƺ��� �ҵ�.
     [Header("JumpState")]
-    [SerializeField] [Range(0f, 100f)] private float jumpPower;
-    [SerializeField] [Range(0f, 100f)] private float jumpRayLength;
+    [SerializeField] [Range(0f, 10f)] private float jumpPower = 5f;
+    [SerializeField] [Range(0f, 2f)] private float jumpRayLength = 1.2f;
+    [SerializeField] [Range(0f, 20f)] private float jumpStamina;
     [SerializeField] private LayerMask groundMask;
 
     [Header("LookState")]
-    [SerializeField] [Range(0f, 90f)] private float ViewAngle;
-    [SerializeField] [Range(0f, 1f)] private float mouseSensitivity;
-    [SerializeField] private GameObject cameraContainer;
+    [SerializeField] [Range(0f, 90f)] private float ViewAngle = 50f;
+    [SerializeField] [Range(0f, 1f)] private float mouseSensitivity = 0.1f;
+    private GameObject cameraContainer;
     private float curXRot;
     private Vector2 lookDirection;
+
+
 
     [Header("Gizmos")]
     [SerializeField] private bool debugMode;
@@ -25,6 +30,7 @@ public class PlayerBehaviour : EntityBehaviour
     {
         base.Awake();
         inputHandler = GetComponent<InputHandler>();
+        cameraContainer = Util.FindChild(gameObject, "CameraContainer");
     }
 
     private void Start()
@@ -34,6 +40,7 @@ public class PlayerBehaviour : EntityBehaviour
         inputHandler.OnJumpEvent += Jump;
         inputHandler.OnLookEvent += GetLookEvent;
         //Cursor.lockState = CursorLockMode.Locked;
+        conditions = (Managers.UI.SceneUI as UI_HUD).conditions;
     }
 
     #region EventCallbackMethod
@@ -65,12 +72,13 @@ public class PlayerBehaviour : EntityBehaviour
 
     private void Jump()
     {
-        if(!isGrounded())
+        if (!isGrounded() || IsStaminaZero())
         {
             return;
         }
 
         body.AddForce(transform.up * jumpPower, ForceMode.Impulse);
+        UseStamina(jumpStamina);
     }
 
     private bool isGrounded()
@@ -98,11 +106,22 @@ public class PlayerBehaviour : EntityBehaviour
     private void OnDrawGizmos()
     {
         Vector3 downRay = transform.up * jumpRayLength * -1f ;
-        Vector3 frontRay = cameraContainer.transform.forward * (GetComponent<CapsuleCollider>().radius + 1);
+        Vector3 frontRay = transform.forward * (GetComponent<CapsuleCollider>().radius + 1);
         if(debugMode)
         {
             Debug.DrawRay(transform.position, downRay, Color.red);
             Debug.DrawRay(cameraContainer.transform.position, frontRay, Color.green);
         }
     }
+
+    private bool IsStaminaZero()
+    {
+        return conditions.Get(ConditionType.Stamina).isZero();
+    }
+
+    private void UseStamina(float value)
+    {
+        conditions.Get(ConditionType.Stamina).Substract(value);
+    }
+
 }

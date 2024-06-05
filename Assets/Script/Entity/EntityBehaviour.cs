@@ -11,9 +11,9 @@ public class EntityBehaviour : MonoBehaviour, IMoveable
     [Range(0f, 100f)] protected float hp;
 
     [Header("MoveState")]
-    [SerializeField] [Range(0f, 100f)] protected float moveSpeed;
-    [SerializeField] [Range(0f, 100f)] protected float runSpeed;
-    [SerializeField] protected float curSpeed;
+    [SerializeField] [Range(0f, 5f)] protected float moveSpeed;
+    [SerializeField] [Range(0f, 10f)] protected float runSpeed;
+    protected float curSpeed;
 
     
 
