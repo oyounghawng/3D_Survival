@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using TMPro;
-using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UI_Inventory : UI_Popup
 {
@@ -23,7 +20,7 @@ public class UI_Inventory : UI_Popup
     {
     }
     enum Texts
-    { 
+    {
     }
     void Start()
     {
@@ -40,8 +37,8 @@ public class UI_Inventory : UI_Popup
 
         SetInventorySlot();
         GetButton((int)Buttons.ExitBtn).gameObject.BindEvent(OnCloseButton);
-//        Managers.UI.ShowPopupUI<UI_Inventory>("UI_Inventory");
-//        Managers.UI.TogglePopupUI<UI_Inventory>();
+        //        Managers.UI.ShowPopupUI<UI_Inventory>("UI_Inventory");
+        //        Managers.UI.TogglePopupUI<UI_Inventory>();
     }
 
     void SetInventorySlot()

@@ -17,6 +17,7 @@ public class MainScene : BaseScene
         while (Managers.Data.Loaded() == false)
             yield return null;
         Managers.UI.ShowSceneUI<UI_HUD>();
+        
     }
     public override void Clear()
     {

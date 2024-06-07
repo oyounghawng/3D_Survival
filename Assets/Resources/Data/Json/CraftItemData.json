@@ -1,0 +1,10 @@
+{
+  "craftItems": [
+    {
+      "Craft_Id" : 0,
+      "ItemName" : "몽둥이",
+      "ItemInfo" : "복날에 개패듯 야무진 몽둥이이다. \n 효과가 있다.",
+      "NeedItem" : ["나무막대기","돌",""]
+    }
+  ]
+}

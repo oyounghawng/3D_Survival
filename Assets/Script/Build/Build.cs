@@ -3,48 +3,56 @@ using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Build : MonoBehaviour
 {
     public GameObject buildObj;
-    private Vector3 position;
 
     public LayerMask layerMask;
     private bool canBuild = true;
-    Vector3 hitCubePos;
+
     void Update()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 100f, layerMask))
         {
+            Vector3 SurfaceVec = hit.normal; // 보정치 필요
+            Vector3 hitCubePos = Vector3.zero;
+            Vector3 InstantiatedCubsPos = Vector3.zero;
             /*
-            if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Water"))
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Water"))
             {
-                canBuild = false;
                 GetComponent<MeshRenderer>().material.color = Color.red;
+                canBuild = false;
+                float height = GetComponent<BoxCollider>().size.y / 2f;
+                SurfaceVec *= height;
+                hitCubePos = hit.point + SurfaceVec;
+                InstantiatedCubsPos = hitCubePos;
+                this.gameObject.transform.position = InstantiatedCubsPos;
                 return;
             }
             */
-
-            Vector3 InstantiatedCubsPos = Vector3.zero;
             if (hit.transform.CompareTag("Ground"))
             {
                 float height = GetComponent<BoxCollider>().size.y / 2f;
-                Vector3 SurfaceVec = hit.normal * height; // 보정치 필요
+                SurfaceVec *= height;
                 hitCubePos = hit.point + SurfaceVec;
-                this.gameObject.transform.position = hitCubePos;
                 InstantiatedCubsPos = hitCubePos;
             }
             else if (hit.transform.CompareTag("Wall"))
             {
-                Vector3 SurfaceVec = hit.normal;
+                canBuild = true;
+                GetComponent<MeshRenderer>().material.color = Color.gray;
+                SurfaceVec = hit.normal;
                 hitCubePos = hit.transform.position;
                 InstantiatedCubsPos = SurfaceVec + hitCubePos;
                 this.gameObject.transform.position = InstantiatedCubsPos;
-                GetComponent<MeshRenderer>().material.color = Color.gray;
-                canBuild = true;
             }
+            this.gameObject.transform.position = InstantiatedCubsPos;
+
+
             if (Input.GetMouseButtonDown(0) && canBuild)
             {
                 Destroy(this.gameObject);
@@ -55,7 +63,6 @@ public class Build : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        
         if (other.gameObject.CompareTag("Wall"))
         {
             GetComponent<MeshRenderer>().material.color = Color.red;
@@ -67,5 +74,4 @@ public class Build : MonoBehaviour
         GetComponent<MeshRenderer>().material.color = Color.gray;
         canBuild = true;
     }
-
 }

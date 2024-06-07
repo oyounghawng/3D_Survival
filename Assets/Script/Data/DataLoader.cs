@@ -23,3 +23,28 @@ public class LevelExpDataLoader : ILoader<int, LevelExpData>
         return dic;
     }
 }
+
+[Serializable]
+public class CraftItemData
+{
+    public int Craft_Id;
+    public string ItemName;
+    public string ItemInfo;
+    public string[] NeedItem;
+}
+
+[Serializable]
+public class CraftItemDataLoader : ILoader<int, CraftItemData>
+{
+    public List<CraftItemData> craftItems = new List<CraftItemData>();
+
+    public Dictionary<int, CraftItemData> MakeDict()
+    {
+        Dictionary<int, CraftItemData> dic = new Dictionary<int, CraftItemData>();
+
+        foreach (CraftItemData craftItem in craftItems)
+            dic.Add(craftItem.Craft_Id, craftItem);
+
+        return dic;
+    }
+}
