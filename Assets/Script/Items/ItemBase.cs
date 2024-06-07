@@ -4,22 +4,17 @@ using System.ComponentModel;
 using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
-public class ItemBase : MonoBehaviour,IInteractable
+public class ItemBase : ItemData,IInteractable
 {
-    private ItemData data;
-    public ItemData Data
-    {
-        get { return data; } 
-    }
     public virtual string GetData()
     {
-        return string.Format($"{data.ID} | {data.name} | {data.desc}");
+        return string.Format($"{ID} | {name} | {desc}");
     }
 
     public virtual void OnInteract()
     {
         Managers.Player.Inventory.addItem?.Invoke(this);
-        Destroy(gameObject);
+        Destroy(this);
     }
 
 }

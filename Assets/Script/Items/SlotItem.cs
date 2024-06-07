@@ -16,7 +16,7 @@ public class SlotItem : MonoBehaviour
     public virtual void Set()
     {
         icon.gameObject.SetActive(true);
-        icon.sprite = item.Data.icon;
+        icon.sprite = item.icon;
         quantityTxt.text = quantity > 1 ? quantity.ToString() : string.Empty;
     }
     public virtual void Clear()

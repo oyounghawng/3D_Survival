@@ -3,7 +3,7 @@
 [CreateAssetMenu(fileName ="Item",menuName ="new ItemWeapon")]
 public class ItemWeapon : ItemBase, IEquippable, IAttack
 {
-    public ItemWeaponType type;
+    public ItemWeaponType weaponType;
     public int dmg;
     public float rate;
     public void Attack()
