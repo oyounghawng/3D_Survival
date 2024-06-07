@@ -8,7 +8,6 @@ public class GameData
 {
     public bool BGMOn;
     public bool EffectSoundOn;
-
 }
 
 public class GameManagerEx
