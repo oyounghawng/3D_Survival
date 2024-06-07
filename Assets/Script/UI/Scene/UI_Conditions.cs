@@ -11,6 +11,12 @@ public enum ConditionType
     Stamina
 }
 
+public enum CalType
+{
+    Add,
+    Substract
+}
+
 public class UI_Conditions : MonoBehaviour
 {
     public Dictionary<ConditionType, Condition> conditionDict = new Dictionary<ConditionType, Condition>();
@@ -32,6 +38,34 @@ public class UI_Conditions : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void Update()
+    {
+        Passive(ConditionType.Stamina, 1f, CalType.Add);
+        Passive(ConditionType.Hunger, 0.5f, CalType.Substract);
+        Passive(ConditionType.Water, 0.1f, CalType.Substract);
+    }
+
+    public void Passive(ConditionType conditionType, float value, CalType calType)
+    {
+        Condition condition = Get(conditionType);
+
+        if(condition == null) 
+        {
+            return;
+        }
+
+        value *= Time.deltaTime;
+        switch(calType)
+        {
+            case CalType.Add:
+                condition.Add(value); 
+                break;
+            case CalType.Substract:
+                condition.Substract(value); 
+                break;
+        }
     }
 
 }

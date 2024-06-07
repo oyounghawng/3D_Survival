@@ -7,7 +7,7 @@ public class InputController : InputHandler
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Performed)
+        if(context.phase == InputActionPhase.Started)
         {
             isMove = true;
         }
@@ -21,7 +21,7 @@ public class InputController : InputHandler
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Performed)
+        if(context.phase == InputActionPhase.Started)
         {
             CallJumpEvent();
         }
@@ -29,7 +29,7 @@ public class InputController : InputHandler
 
     public void OnRun(InputAction.CallbackContext context)
     {
-        CallRunEvent(context.phase == InputActionPhase.Performed);
+        CallRunEvent(context.performed);
     }
 
     public void OnLook(InputAction.CallbackContext context)
@@ -45,5 +45,10 @@ public class InputController : InputHandler
             if(Managers.UI.FindPopup<UI_Inventory>() != null)
                 Managers.UI.TogglePopupUI<UI_Inventory>();
         }
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        CallAttackEvent();
     }
 }

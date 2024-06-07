@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerBehaviour : EntityBehaviour
@@ -21,6 +22,9 @@ public class PlayerBehaviour : EntityBehaviour
     private float curXRot;
     private Vector2 lookDirection;
 
+    private bool isRun;
+    private bool isMove;
+    private bool canRun = true;
 
 
     [Header("Gizmos")]
@@ -47,12 +51,18 @@ public class PlayerBehaviour : EntityBehaviour
     private void GetMoveEvent(Vector2 vector)
     {
         moveDirection = vector;
+        isMove = vector != Vector2.zero;
     }
 
     private void GetRunEvent(bool value)
     {
-        Run(value);
+        if (canRun)
+        {
+            isRun = value;
+            Run(isRun);
+        }
     }
+
 
     private void GetLookEvent(Vector2 vector)
     {
@@ -70,9 +80,34 @@ public class PlayerBehaviour : EntityBehaviour
         Look(lookDirection);
     }
 
+    public override void Move(Vector2 direction)
+    {
+        base.Move(direction);
+
+        if(isMove && !IsStaminaEnough(0.1f))
+        {
+            StartCoroutine(canRunFalse());
+        }
+
+        if(curSpeed == runSpeed && isMove && canRun)
+        {
+            conditions.Passive(ConditionType.Stamina, 10f, CalType.Substract);
+            conditions.Passive(ConditionType.Hunger, 2f, CalType.Substract);
+            conditions.Passive(ConditionType.Water, 2f, CalType.Substract);
+        }
+    }
+
+    private IEnumerator canRunFalse()
+    {
+        canRun = false;
+        curSpeed = moveSpeed;
+        yield return new WaitForSeconds(5);
+        canRun = true;
+    }
+
     private void Jump()
     {
-        if (!isGrounded() || IsStaminaZero())
+        if (!isGrounded() || !IsStaminaEnough(jumpStamina))
         {
             return;
         }
@@ -114,9 +149,9 @@ public class PlayerBehaviour : EntityBehaviour
         }
     }
 
-    private bool IsStaminaZero()
+    private bool IsStaminaEnough(float value)
     {
-        return conditions.Get(ConditionType.Stamina).isZero();
+        return conditions.Get(ConditionType.Stamina).isEnough(value);
     }
 
     private void UseStamina(float value)

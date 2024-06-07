@@ -783,6 +783,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 8bc750e0-c3f1-4d44-978a-cbcd1205c44a
     m_ActionName: Player/Attack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f3ae2e35-10d1-4347-84d0-2cc5c8a06241
+    m_ActionName: Player/Inventory[/Keyboard/i]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -813,10 +817,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  runSpeed: 5
+  runSpeed: 10
   jumpPower: 5
   jumpRayLength: 1.2
-  jumpStamina: 0
+  jumpStamina: 20
   groundMask:
     serializedVersion: 2
     m_Bits: 192
