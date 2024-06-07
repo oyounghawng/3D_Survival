@@ -48,7 +48,7 @@ public class Condition : MonoBehaviour
     {
         curValue -= value;
 
-        if(isZero())
+        if (isZero())
         {
             curValue = 0;
         }
@@ -62,5 +62,10 @@ public class Condition : MonoBehaviour
     public bool isZero()
     {
         return curValue <= 0;
+    }
+
+    public bool isEnough(float value)
+    {
+        return curValue >= value;
     }
 }

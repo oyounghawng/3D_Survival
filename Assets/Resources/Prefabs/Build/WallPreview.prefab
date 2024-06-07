@@ -100,7 +100,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -121,4 +121,4 @@ MonoBehaviour:
   buildObj: {fileID: 2994460001608192083, guid: 4f4f723b26f1d024d9e425e939298a68, type: 3}
   layerMask:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 208
