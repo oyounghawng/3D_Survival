@@ -1,3 +1,8 @@
+interface IInteractable
+{
+    public string GetData();
+    public void OnInteract();
+}
 interface IEquippable
 {
     public void Equip();

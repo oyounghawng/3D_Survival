@@ -1,34 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Unity.IO.LowLevel.Unsafe;
+using Unity.VisualScripting;
 using UnityEngine;
-
-[CreateAssetMenu(fileName ="Item",menuName ="new ItemBase",order =0)]
-public class ItemBase : ScriptableObject
+public class ItemBase : MonoBehaviour,IInteractable
 {
-    [Header("Information")]
-    public int ID;
-    public string name;
-    public string desc;
-    public ItemType type;
-    public Sprite icon;
-    public GameObject prefab;
-
-    [Header("Stacking")]
-    public bool canStack;
-    public int maxStackAmount;
-
-    public void OnInteract()
+    private ItemData data;
+    public ItemData Data
     {
-        
+        get { return data; } 
     }
-}
-public enum ItemType
-{
-    None,
-    Resource,
-    Use,
-    Tool,
-    Weapon,
-    Armor
+    public virtual string GetData()
+    {
+        return string.Format($"{data.ID} | {data.name} | {data.desc}");
+    }
+
+    public virtual void OnInteract()
+    {
+        Managers.Player.Inventory.addItem?.Invoke(this);
+        Destroy(gameObject);
+    }
+
 }
