@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2eda9388dabc114ba896d09547f2921, type: 3}
-  m_Name: Item 1
+  m_Script: {fileID: 11500000, guid: 233d4f763c5f0114fac248fa2a1ae631, type: 3}
+  m_Name: ItemUse
   m_EditorClassIdentifier: 
   ID: 0
   name: 
@@ -20,4 +20,3 @@ MonoBehaviour:
   prefab: {fileID: 0}
   canStack: 0
   maxStackAmount: 0
-  collectTools: 0

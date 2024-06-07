@@ -9,14 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a811b481aefcf7f499a1de6fc9a4bfc4, type: 3}
-  m_Name: Item
+  m_Script: {fileID: 11500000, guid: 95e1a00efc5ce7d4396d5718b44ae1dd, type: 3}
+  m_Name: ItemWeapon
   m_EditorClassIdentifier: 
   ID: 0
-  name: 
-  desc: 
+  name: n
+  desc: d
   type: 0
   icon: {fileID: 0}
   prefab: {fileID: 0}
   canStack: 0
   maxStackAmount: 0
+  weaponType: 0
+  dmg: 0
+  rate: 0
