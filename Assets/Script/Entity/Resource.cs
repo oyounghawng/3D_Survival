@@ -17,7 +17,7 @@ public class Resource : MonoBehaviour, IDamagable
 
     public bool Damaged(float damage)
     {
-        Debug.Log("damaged");
+        //Debug.Log("damaged");
         if(damage <= 0)
         {
             return false;
