@@ -31,7 +31,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void AddItem(ItemBase item)
     {
-        if(item.Data.canStack)
+        if(item.canStack)
         {
 //            SlotItem slot = GetItemStack(item);
         }
