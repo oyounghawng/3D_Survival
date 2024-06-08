@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UIInventory : MonoBehaviour
 {
-    public SlotItem[] bagSlots;
-    public SlotEquip[] equipSlots;
+    public UI_ItemSlot[] bagSlots;
+    public UI_EquipSlot[] equipSlots;
     public GameObject inventoryBG;
     public Transform dropPosition;
     public Transform itemBag;
@@ -19,18 +19,18 @@ public class UIInventory : MonoBehaviour
         // set the drop position by connecting to player transform
 
         inventoryBG.gameObject.SetActive(false);
-        bagSlots = new SlotItem[itemBag.childCount];
+        bagSlots = new UI_ItemSlot[itemBag.childCount];
         for(int a=0; a<itemBag.childCount; a++)
         {
-            bagSlots[a] = itemBag.GetChild(a).GetComponent<SlotItem>();
-            bagSlots[a].idx = a;
+            bagSlots[a] = itemBag.GetChild(a).GetComponent<UI_ItemSlot>();
+            bagSlots[a].Idx = a;
             //bagSlots[a].inventory = this;
         }
-        equipSlots = new SlotEquip[equip.childCount];
+        equipSlots = new UI_EquipSlot[equip.childCount];
         for(int a=0; a<equip.childCount; a++)
         {
-            equipSlots[a] = equip.GetChild(a).GetComponent<SlotEquip>();
-            equipSlots[a].idx = a;
+            equipSlots[a] = equip.GetChild(a).GetComponent<UI_EquipSlot>();
+            equipSlots[a].Idx = a;
             // equipSlots[a].inventory = this;
         }
     }

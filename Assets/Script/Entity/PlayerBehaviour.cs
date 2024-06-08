@@ -26,13 +26,13 @@ public class PlayerBehaviour : EntityBehaviour
     private bool isMove;
     private bool canRun = true;
 
-
     [Header("Gizmos")]
     [SerializeField] private bool debugMode;
 
     protected override void Awake()
     {
         base.Awake();
+        Managers.Player.Player = gameObject;
         inputHandler = GetComponent<InputHandler>();
         cameraContainer = Util.FindChild(gameObject, "CameraContainer");
     }

@@ -1,5 +1,7 @@
 ﻿using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class PlayerInteraction : MonoBehaviour
     private void Awake()
     {
         camera = Camera.main;
+        Managers.Player.PlayerInteraction = this;
     }
     private void Update()
     {
@@ -43,10 +46,20 @@ public class PlayerInteraction : MonoBehaviour
     }
     private void SetPromptText(string text)
     {
+        string[] comp = text.Split(" | ");
         (Managers.UI.SceneUI as UI_HUD).promptTextBG.SetActive(true);
-        (Managers.UI.SceneUI as UI_HUD).promptText.text = text;
-
+        (Managers.UI.SceneUI as UI_HUD).promptText.text = string.Format
+            ($"{comp[(int)PromptFormat.Name]}\n\n" +
+             $"{comp[(int)PromptFormat.Description]}");
     }
-
-
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started && interactable != null)
+        {
+            interactable.OnInteract();
+            interactGO = null;
+            interactable = null;
+            (Managers.UI.SceneUI as UI_HUD).promptTextBG.SetActive(false);
+        }
+    }
 }

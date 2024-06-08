@@ -227,10 +227,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d77d8e34ef7b942b2ab0bf48c91f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idx: 0
   item: {fileID: 0}
+  inventory: {fileID: 0}
   btn: {fileID: 0}
   icon: {fileID: 0}
-  idx: 0
   quantityTxt: {fileID: 0}
   quantity: 0
   default_icon: {fileID: 0}
@@ -251,7 +252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2587641531713041611
 RectTransform:
   m_ObjectHideFlags: 0
@@ -292,7 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -326,7 +327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6118969326481369835
 RectTransform:
   m_ObjectHideFlags: 0

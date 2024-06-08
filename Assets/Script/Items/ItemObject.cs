@@ -11,8 +11,14 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        Managers.Player.Inventory.addItem?.Invoke(item);
+        Managers.Player.Inventory.addItem?.Invoke();
         Destroy(gameObject);
     }
 
+}
+enum PromptFormat
+{
+    ID,
+    Name,
+    Description
 }
