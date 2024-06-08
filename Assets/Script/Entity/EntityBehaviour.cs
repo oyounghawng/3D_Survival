@@ -7,8 +7,8 @@ public class EntityBehaviour : MonoBehaviour, IMoveable
 
     [Header("EntityInfo")]
     protected string entityName;
-    [Range(0f, 100f)] protected float attack;
-    [Range(0f, 100f)] protected float hp;
+    [SerializeField] [Range(0f, 100f)] protected float attack;
+    [SerializeField] [Range(0f, 100f)] protected float hp;
 
     [Header("MoveState")]
     [SerializeField] [Range(0f, 5f)] protected float moveSpeed;
