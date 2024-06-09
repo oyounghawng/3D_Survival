@@ -43,27 +43,26 @@ public class UI_ItemSlot : UI_Base
     }
     public virtual void Set()
     {
-        /*
-        icon.gameObject.SetActive(true);
-        icon.sprite = item.icon;
+        GetImage((int)Images.Icon).gameObject.SetActive(true);
+        GetImage((int)Images.Icon).sprite = item.icon;
         if (item.type is ItemType.Resource or ItemType.Use)
         {
-            quantityTxt.gameObject.SetActive(true);
-            quantityTxt.text = quantity > 0 ? quantity.ToString() : string.Empty;
+            GetText((int)Texts.Num).gameObject.SetActive(true);
+            GetText((int)Texts.Num).text = quantity > 0 ? quantity.ToString() : string.Empty;
         }
-        */
+
     }
     public virtual void Clear()
     {
-        /*
+
         if (item == null)
         {
-            icon.gameObject.SetActive(false);
+            GetImage((int)Images.Icon).gameObject.SetActive(false);
             return;
         }
         if (item.type is ItemType.Resource or ItemType.Use)
-            quantityTxt.text = quantity.ToString();
-        */
+            GetText((int)Texts.Num).text = quantity.ToString();
+
     }
     public void OnSelect(PointerEventData evt)
     {

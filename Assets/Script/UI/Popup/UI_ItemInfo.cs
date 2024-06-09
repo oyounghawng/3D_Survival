@@ -1,6 +1,7 @@
 ﻿using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UI_ItemInfo : UI_Popup
 {
@@ -11,7 +12,7 @@ public class UI_ItemInfo : UI_Popup
         ItemStat,
         StatValue
     }
-    enum BG
+    enum Images
     {
         InfoBG
     }
@@ -24,8 +25,10 @@ public class UI_ItemInfo : UI_Popup
     public override void Init()
     {
         base.Init();
-        Bind<Image>(typeof(BG));
+        Bind<Image>(typeof(Images));
         Bind<TextMeshProUGUI>(typeof(Texts));
+
+        GetImage((int)Images.InfoBG).gameObject.BindEvent(OffToggle);
 
         gameObject.SetActive(false);
     }
@@ -38,5 +41,10 @@ public class UI_ItemInfo : UI_Popup
     public void SetText(ItemBase item)
     {
 
+    }
+
+    private void OffToggle(PointerEventData evt)
+    {
+        Managers.UI.TogglePopupUI<UI_ItemInfo>();
     }
 }

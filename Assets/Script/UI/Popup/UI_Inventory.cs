@@ -110,8 +110,6 @@ public class UI_Inventory : UI_Popup
         return;
 
     }
-
-
     private UI_ItemSlot GetItemStack(ItemBase selItem)
     {
         foreach (UI_ItemSlot slot in slots)
