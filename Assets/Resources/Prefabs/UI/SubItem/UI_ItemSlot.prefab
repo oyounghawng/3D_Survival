@@ -257,19 +257,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8480261645225072476}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2842700803902288617}
-        m_TargetAssemblyTypeName: UI_ItemSlot, Assembly-CSharp
-        m_MethodName: BtnDebug
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &3011368340700548511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,9 +288,6 @@ MonoBehaviour:
   idx: 0
   item: {fileID: 0}
   inventory: {fileID: 0}
-  btn: {fileID: 0}
-  icon: {fileID: 0}
-  quantityTxt: {fileID: 0}
   quantity: 0
 --- !u!1 &8842983404462838158
 GameObject:

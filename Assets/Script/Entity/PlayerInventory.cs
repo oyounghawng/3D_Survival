@@ -25,9 +25,7 @@ public class PlayerInventory : MonoBehaviour
     private void Awake()
     {
         inventory = Managers.UI.ShowPopupUI<UI_Inventory>(Enum.GetName(typeof(UI_Popups),(int)UI_Popups.UI_Inventory));
-        Managers.UI.TogglePopupUI<UI_Inventory>();
         itemInfo = Managers.UI.ShowPopupUI<UI_ItemInfo>(Enum.GetName(typeof(UI_Popups),(int)UI_Popups.UI_ItemInfo));
-        Managers.UI.TogglePopupUI<UI_ItemInfo>();
         Managers.Player.Inventory = this;
         addItem += inventory.AddItem;
     }

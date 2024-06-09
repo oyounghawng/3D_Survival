@@ -46,6 +46,7 @@ public class UI_Inventory : UI_Popup
         //        Managers.UI.TogglePopupUI<UI_Inventory>();
 
         dropPos = Managers.Player.Player.transform;
+        gameObject.SetActive(false);
     }
 
     void SetInventorySlot()

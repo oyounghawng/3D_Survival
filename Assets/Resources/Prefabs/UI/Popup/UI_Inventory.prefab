@@ -962,7 +962,6 @@ GameObject:
   - component: {fileID: 8980492155206682703}
   - component: {fileID: 6476856109170718879}
   - component: {fileID: 5342418547265108332}
-  - component: {fileID: 30870192106440110}
   m_Layer: 5
   m_Name: ItemBag
   m_TagString: Untagged
@@ -1027,29 +1026,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 0
---- !u!223 &30870192106440110
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5105286343850466017}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 1
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 1
-  m_TargetDisplay: 0
 --- !u!1 &7781900772273607862
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,6 +1220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d72ded78e2f8e40adc3df2ae5cc759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slots: []
+  dropPos: {fileID: 0}
 --- !u!1001 &950015748453505338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1254,7 +1232,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1924868826270169173, guid: 189bc9fa11796d644afc68cc50413ec9, type: 3}
       propertyPath: m_Name
-      value: SlotLeggings
+      value: UI_ItemSlot
       objectReference: {fileID: 0}
     - target: {fileID: 2743547743601715236, guid: 189bc9fa11796d644afc68cc50413ec9, type: 3}
       propertyPath: m_Pivot.x
@@ -1360,7 +1338,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1924868826270169173, guid: 189bc9fa11796d644afc68cc50413ec9, type: 3}
       propertyPath: m_Name
-      value: SlotLeftHand
+      value: UI_ItemSlot
       objectReference: {fileID: 0}
     - target: {fileID: 2743547743601715236, guid: 189bc9fa11796d644afc68cc50413ec9, type: 3}
       propertyPath: m_Pivot.x
@@ -1466,7 +1444,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1924868826270169173, guid: 189bc9fa11796d644afc68cc50413ec9, type: 3}
       propertyPath: m_Name
-      value: SlotBoots
+      value: UI_ItemSlot
       objectReference: {fileID: 0}
     - target: {fileID: 2743547743601715236, guid: 189bc9fa11796d644afc68cc50413ec9, type: 3}
       propertyPath: m_Pivot.x
@@ -1572,7 +1550,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1924868826270169173, guid: 189bc9fa11796d644afc68cc50413ec9, type: 3}
       propertyPath: m_Name
-      value: SlotChestPlate
+      value: UI_ItemSlot
       objectReference: {fileID: 0}
     - target: {fileID: 2743547743601715236, guid: 189bc9fa11796d644afc68cc50413ec9, type: 3}
       propertyPath: m_Pivot.x
@@ -1678,7 +1656,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1924868826270169173, guid: 189bc9fa11796d644afc68cc50413ec9, type: 3}
       propertyPath: m_Name
-      value: SlotHelmet
+      value: UI_ItemSlot
       objectReference: {fileID: 0}
     - target: {fileID: 2743547743601715236, guid: 189bc9fa11796d644afc68cc50413ec9, type: 3}
       propertyPath: m_Pivot.x
@@ -1780,7 +1758,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1924868826270169173, guid: 189bc9fa11796d644afc68cc50413ec9, type: 3}
       propertyPath: m_Name
-      value: SlotRightHand
+      value: UI_ItemSlot
       objectReference: {fileID: 0}
     - target: {fileID: 2743547743601715236, guid: 189bc9fa11796d644afc68cc50413ec9, type: 3}
       propertyPath: m_Pivot.x

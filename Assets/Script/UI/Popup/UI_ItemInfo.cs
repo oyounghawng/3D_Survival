@@ -26,6 +26,8 @@ public class UI_ItemInfo : UI_Popup
         base.Init();
         Bind<Image>(typeof(BG));
         Bind<TextMeshProUGUI>(typeof(Texts));
+
+        gameObject.SetActive(false);
     }
 
     public void SetTransform(Vector3 pos)
