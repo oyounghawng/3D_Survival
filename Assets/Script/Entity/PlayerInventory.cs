@@ -17,11 +17,12 @@ public class PlayerInventory : MonoBehaviour
     ItemBase[] items; // item ids
     ItemBase[] equips; // equip ids
 
-    public event Action<ItemBase> addItem;
+    public Action<ItemBase> addItem;
 
     private void Awake()
     {
         Managers.UI.ShowPopupUI<UI_Inventory>("UI_Inventory");
+        Managers.UI.TogglePopupUI<UI_Inventory>();
         Managers.Player.Inventory = this;
         items = new ItemBase[nitem];
         equips = new ItemBase[Enum.GetValues(typeof(EquipType)).Length];
@@ -30,7 +31,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void AddItem(ItemBase item)
     {
-        if(item.canStack)
+        if(item.Data.canStack)
         {
 //            SlotItem slot = GetItemStack(item);
         }
