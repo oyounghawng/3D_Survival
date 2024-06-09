@@ -1,27 +1,24 @@
 ﻿using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
     public float checkRate = 0.5f;
     private float prevCheckTime;
-    public float checkDistance;
+    public float checkDistance = 10f;
     public LayerMask mask;
 
     public GameObject interactGO;
     private IInteractable interactable;
 
-    public TextMeshProUGUI promptText;
     private Camera camera;
 
     private void Awake()
     {
         camera = Camera.main;
-        //promptText = Util.GetOrAddComponent<TextMeshProUGUI>(Managers.UI.FindPopup<UI_PromptText>().gameObject);
-    }
-    private void Start()
-    {
-//        promptText = Managers.UI.FindPopup<UI_PromptText>().gameObject.GetComponent<TextMeshProUGUI>();
+        Managers.Player.PlayerInteraction = this;
     }
     private void Update()
     {
@@ -36,22 +33,33 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     interactGO = hit.collider.gameObject;
                     interactable = hit.collider.GetComponent<IInteractable>();
-                    SetPromptText();
+                    SetPromptText(interactable.GetData());
                 }
             }
             else
             {
                 interactGO = null;
                 interactable = null;
-//                promptText.gameObject.SetActive(false);
+                (Managers.UI.SceneUI as UI_HUD).promptTextBG.SetActive(false);
             }
         }
     }
-    private void SetPromptText()
+    private void SetPromptText(string text)
     {
-        promptText.gameObject.SetActive(true);
-        promptText.text = interactable.GetData();
+        string[] comp = text.Split(" | ");
+        (Managers.UI.SceneUI as UI_HUD).promptTextBG.SetActive(true);
+        (Managers.UI.SceneUI as UI_HUD).promptText.text = string.Format
+            ($"{comp[(int)PromptFormat.Name]}\n\n" +
+             $"{comp[(int)PromptFormat.Description]}");
     }
-
-
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started && interactable != null)
+        {
+            interactable.OnInteract();
+            interactGO = null;
+            interactable = null;
+            (Managers.UI.SceneUI as UI_HUD).promptTextBG.SetActive(false);
+        }
+    }
 }

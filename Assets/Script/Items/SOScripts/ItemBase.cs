@@ -1,6 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using Unity.IO.LowLevel.Unsafe;
+using Unity.VisualScripting;
 using UnityEngine;
-
-public class ItemData : ScriptableObject
+public class ItemBase : ScriptableObject
 {
     [Header("Information")]
     public int ID;
