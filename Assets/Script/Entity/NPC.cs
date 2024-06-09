@@ -13,9 +13,6 @@ public enum AIState
 public class NPC : EntityBehaviour
 {
     [Header("Stats")]
-    public int health;
-    public float walkSpeed;
-    public float runSpeed;
     public ItemBase[] dropOnDeath;
 
     [Header("AI")]
@@ -42,8 +39,9 @@ public class NPC : EntityBehaviour
     private Animator animator;
     private SkinnedMeshRenderer[] meshRenderers;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
@@ -56,7 +54,7 @@ public class NPC : EntityBehaviour
 
     private void Update()
     {
-        //playerDistance = Vector3.Distance(transform.position, CharacterManager.Instance.Player.transform.position);
+        playerDistance = Vector3.Distance(transform.position, Managers.Object.Player.transform.position);
 
         animator.SetBool("Moving", aiState != AIState.IDLE);
 
@@ -67,7 +65,7 @@ public class NPC : EntityBehaviour
                 PassiveUpdate();
                 break;
             case AIState.ATTACKING:
-                //AttackingUpdate();
+                AttackingUpdate();
                 break;
         }
     }
@@ -79,11 +77,11 @@ public class NPC : EntityBehaviour
         switch(aiState)
         {
             case AIState.IDLE:
-                agent.speed = walkSpeed;
+                agent.speed = moveSpeed;
                 agent.isStopped = true;
                 break;
             case AIState.WANDERING:
-                agent.speed = walkSpeed;
+                agent.speed = moveSpeed;
                 agent.isStopped = false;
                 break;
             case AIState.ATTACKING:
@@ -92,7 +90,7 @@ public class NPC : EntityBehaviour
                 break;
         }
 
-        animator.speed = agent.speed / walkSpeed;
+        animator.speed = agent.speed / moveSpeed;
     }
 
     private void PassiveUpdate()
@@ -149,56 +147,57 @@ public class NPC : EntityBehaviour
 
     }
 
-    //private void AttackingUpdate()
-    //{
-    //    if(playerDistance < attackDistance && isPlayerInFieldOfView())
-    //    {
-    //        agent.isStopped = true;
-    //        if(Time.time - lastAttackTime > attackRate)
-    //        {
-    //            lastAttackTime = Time.time;
-    //            //CharacterManager.Instance.Player.controller.GetComponent<IDamagable>().Damaged(damage);
-    //            animator.speed = 1;
-    //            animator.SetTrigger("Attack");
-    //        }
-    //    }
-    //    else
-    //    {
-    //        if(playerDistance<detectDistance)
-    //        {
-    //            agent.isStopped= false;
-    //            NavMeshPath path = new NavMeshPath();
-    //            //if(agent.CalculatePath(CharacterManager.Instance.Player.transform.position, path))
-    //            //{
-    //            //    agent.SetDestination(CharacterManager.Instance.Player.transform.position);
-    //            //}
-    //            //else
-    //            //{
-    //            //    agent.SetDestination(transform.position);
-    //            //    agent.isStopped = true;
-    //            //    SetState(AIState.WANDERING);
-    //            //}
-    //        }
-    //        else
-    //        {
-    //            agent.SetDestination(transform.position);
-    //            agent.isStopped = true;
-    //            SetState(AIState.WANDERING);
-    //        }
-    //    }
-    //}
-
-    //private bool isPlayerInFieldOfView()
-    //{
-    //    Vector3 directionToPlayer = CharacterManager.Instance.Player.transform.position - transform.position;
-    //    float angle = Vector3.Angle(transform.forward, directionToPlayer);
-    //    return angle < fieldOfView * 0.5f;
-    //}
-
-    public void TakePhysicalDamage(int damage)
+    private void AttackingUpdate()
     {
-        health -= damage;
-        if(health <= 0)
+        if (playerDistance < attackDistance && isPlayerInFieldOfView())
+        {
+            agent.isStopped = true;
+            if (Time.time - lastAttackTime > attackRate)
+            {
+                lastAttackTime = Time.time;
+                Managers.Object.Player.GetComponent<IDamagable>().Damaged(damage);
+                animator.speed = 1;
+                animator.SetTrigger("Attack");
+            }
+        }
+        else
+        {
+            if (playerDistance < detectDistance)
+            {
+                agent.isStopped = false;
+                NavMeshPath path = new NavMeshPath();
+                if (agent.CalculatePath(Managers.Object.Player.transform.position, path))
+                {
+                    agent.SetDestination(Managers.Object.Player.transform.position);
+                }
+                else
+                {
+                    agent.SetDestination(transform.position);
+                    agent.isStopped = true;
+                    SetState(AIState.WANDERING);
+                }
+            }
+            else
+            {
+                agent.SetDestination(transform.position);
+                agent.isStopped = true;
+                SetState(AIState.WANDERING);
+            }
+        }
+    }
+
+    private bool isPlayerInFieldOfView()
+    {
+        Vector3 directionToPlayer = Managers.Object.Player.transform.position - transform.position;
+        float angle = Vector3.Angle(transform.forward, directionToPlayer);
+        return angle < fieldOfView * 0.5f;
+    }
+
+    public override void Damaged(float damage)
+    {
+        base.Damaged(damage);
+
+        if(isDie())
         {
             Die();
         }
@@ -208,10 +207,10 @@ public class NPC : EntityBehaviour
 
     private void Die()
     {
-        //for(int i=0; i<dropOnDeath.Length; i++)
-        //{
-        //    Instantiate(dropOnDeath[i].dropPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
-        //}
+        for (int i = 0; i < dropOnDeath.Length; i++)
+        {
+            Instantiate(dropOnDeath[i].prefab, transform.position + Vector3.up * 2, Quaternion.identity);
+        }
 
         Destroy(gameObject);
     }

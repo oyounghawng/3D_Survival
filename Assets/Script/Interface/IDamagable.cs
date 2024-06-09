@@ -1,6 +1,6 @@
 public interface IDamagable
 {
-    bool Damaged(float damage);
+    void Damaged(float damage);
 
     bool isDie();
 }

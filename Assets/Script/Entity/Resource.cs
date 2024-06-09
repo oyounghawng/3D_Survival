@@ -15,12 +15,12 @@ public class Resource : MonoBehaviour, IDamagable
         nowHP = MaxHP;
     }
 
-    public bool Damaged(float damage)
+    public void Damaged(float damage)
     {
         //Debug.Log("damaged");
         if(damage <= 0)
         {
-            return false;
+            return;
         }
 
         nowHP -= damage;
@@ -32,7 +32,7 @@ public class Resource : MonoBehaviour, IDamagable
             Destroy(gameObject);
         }
 
-        return true;
+
     }
 
     public bool isDie()

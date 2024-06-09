@@ -6,10 +6,10 @@ public class EntityBehaviour : MonoBehaviour, IDamagable
     protected Rigidbody body;
 
     [Header("EntityInfo")]
-    protected string entityName;
+    //protected string entityName;
     [SerializeField] protected float attack;
     [SerializeField] protected float MaxHP;
-    protected float curHP;
+    [SerializeField] protected float curHP;
 
     [Header("MoveState")]
     [SerializeField] [Range(0f, 5f)] protected float moveSpeed;
@@ -20,8 +20,8 @@ public class EntityBehaviour : MonoBehaviour, IDamagable
 
     protected virtual void Awake()
     {
-        body = GetComponent<Rigidbody>();
         curSpeed = moveSpeed;
+        curHP = MaxHP;
     }
 
     protected virtual void Move(Vector2 direction)
@@ -44,14 +44,9 @@ public class EntityBehaviour : MonoBehaviour, IDamagable
         }
     }
 
-    public bool Damaged(float damage)
+    public virtual void Damaged(float damage)
     {
         curHP -= damage;
-
-        if (damage <= 0)
-            return false;
-
-        return true;
     }
 
     public bool isDie()

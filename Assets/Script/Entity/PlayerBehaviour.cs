@@ -39,10 +39,12 @@ public class PlayerBehaviour : EntityBehaviour
     protected override void Awake()
     {
         base.Awake();
+        body = GetComponent<Rigidbody>();
         inputHandler = GetComponent<InputHandler>();
         cameraContainer = Util.FindChild(gameObject, "CameraContainer");
         animator = Util.FindChild<Animator>(gameObject);
         cam = Camera.main;
+        
     }
 
     private void Start()
@@ -54,6 +56,10 @@ public class PlayerBehaviour : EntityBehaviour
         inputHandler.OnAttackEvent += GetAttackEvent;
         Cursor.lockState = CursorLockMode.Locked;
         conditions = (Managers.UI.SceneUI as UI_HUD).conditions;
+        MaxHP = conditions.Get(ConditionType.HP).maxValue;
+        curHP = MaxHP;
+
+        Managers.Object.SetPlayer(gameObject);
     }
 
     #region EventCallbackMethod
@@ -103,6 +109,12 @@ public class PlayerBehaviour : EntityBehaviour
     private void GetLookEvent(Vector2 vector)
     {
         lookDirection = vector;
+    }
+
+    public override void Damaged(float damage)
+    {
+        base.Damaged(damage);
+        conditions.Get(ConditionType.HP).Substract(damage);
     }
     #endregion GetEvent
 
