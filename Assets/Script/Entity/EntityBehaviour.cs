@@ -1,14 +1,15 @@
 using System;
 using UnityEngine;
 
-public class EntityBehaviour : MonoBehaviour, IMoveable
+public class EntityBehaviour : MonoBehaviour, IDamagable
 {
     protected Rigidbody body;
 
     [Header("EntityInfo")]
-    protected string entityName;
-    [Range(0f, 100f)] protected float attack;
-    [Range(0f, 100f)] protected float hp;
+    //protected string entityName;
+    [SerializeField] protected float attack;
+    [SerializeField] protected float MaxHP;
+    [SerializeField] protected float curHP;
 
     [Header("MoveState")]
     [SerializeField] [Range(0f, 5f)] protected float moveSpeed;
@@ -19,11 +20,11 @@ public class EntityBehaviour : MonoBehaviour, IMoveable
 
     protected virtual void Awake()
     {
-        body = GetComponent<Rigidbody>();
         curSpeed = moveSpeed;
+        curHP = MaxHP;
     }
 
-    public virtual void Move(Vector2 direction)
+    protected virtual void Move(Vector2 direction)
     {
         Vector3 move = transform.forward * direction.y + transform.right * direction.x;
         move *= curSpeed;
@@ -31,7 +32,7 @@ public class EntityBehaviour : MonoBehaviour, IMoveable
         body.velocity = move;
     }
 
-    public virtual void Run(bool value)
+    protected virtual void Run(bool value)
     {
         if(value)
         {
@@ -42,5 +43,16 @@ public class EntityBehaviour : MonoBehaviour, IMoveable
             curSpeed = moveSpeed;
         }
     }
+
+    public virtual void Damaged(float damage)
+    {
+        curHP -= damage;
+    }
+
+    public bool isDie()
+    {
+        return curHP <= 0;
+    }
+
 
 }

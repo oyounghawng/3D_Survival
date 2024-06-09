@@ -7,6 +7,7 @@ public class PlayerBehaviour : EntityBehaviour
     private InputHandler inputHandler;
     private Vector2 moveDirection;
     private UI_Conditions conditions;
+    private Animator animator;
 
     // ���Ŀ� ������ ���̺��� �̿��ؼ� �����ϴ���, ���� csv�� json���� �����ϴ� ��� ã�ƺ��� �ҵ�.
     [Header("JumpState")]
@@ -26,15 +27,24 @@ public class PlayerBehaviour : EntityBehaviour
     private bool isMove;
     private bool canRun = true;
 
+    [Header("AttackState")]
+    [SerializeField] private float frontRange;
+    [SerializeField] private LayerMask damagableLayer;
+    private Camera cam;
+    private bool isAttack;
+
     [Header("Gizmos")]
     [SerializeField] private bool debugMode;
 
     protected override void Awake()
     {
         base.Awake();
-        Managers.Player.Player = gameObject;
+        body = GetComponent<Rigidbody>();
         inputHandler = GetComponent<InputHandler>();
         cameraContainer = Util.FindChild(gameObject, "CameraContainer");
+        animator = Util.FindChild<Animator>(gameObject);
+        cam = Camera.main;
+        
     }
 
     private void Start()
@@ -43,8 +53,13 @@ public class PlayerBehaviour : EntityBehaviour
         inputHandler.OnRunEvent += GetRunEvent;
         inputHandler.OnJumpEvent += Jump;
         inputHandler.OnLookEvent += GetLookEvent;
-        //Cursor.lockState = CursorLockMode.Locked;
+        inputHandler.OnAttackEvent += GetAttackEvent;
+        Cursor.lockState = CursorLockMode.Locked;
         conditions = (Managers.UI.SceneUI as UI_HUD).conditions;
+        MaxHP = conditions.Get(ConditionType.HP).maxValue;
+        curHP = MaxHP;
+
+        Managers.Object.SetPlayer(gameObject);
     }
 
     #region EventCallbackMethod
@@ -63,10 +78,43 @@ public class PlayerBehaviour : EntityBehaviour
         }
     }
 
+    private void GetAttackEvent()
+    {
+        if(!isAttack)
+        {
+            StartCoroutine(Attack());
+        }
+    }
+
+    private IEnumerator Attack()
+    {
+        animator.SetBool("Attack", true);
+        isAttack = true;
+        yield return new WaitForSeconds(0.1f);
+        Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, frontRange, damagableLayer))
+        {
+            if (hit.transform.TryGetComponent<IDamagable>(out IDamagable damagable))
+            {
+                damagable.Damaged(attack);
+            }
+        }
+        animator.SetBool("Attack", false);
+        yield return new WaitForSeconds(1f);
+        isAttack = false;
+    }
 
     private void GetLookEvent(Vector2 vector)
     {
         lookDirection = vector;
+    }
+
+    public override void Damaged(float damage)
+    {
+        base.Damaged(damage);
+        conditions.Get(ConditionType.HP).Substract(damage);
     }
     #endregion GetEvent
 
@@ -80,11 +128,22 @@ public class PlayerBehaviour : EntityBehaviour
         Look(lookDirection);
     }
 
-    public override void Move(Vector2 direction)
+    protected override void Move(Vector2 direction)
     {
         base.Move(direction);
 
-        if(isMove && !IsStaminaEnough(0.1f))
+        if (isMove)
+        {
+            animator.SetFloat("Speed", curSpeed);
+            animator.SetFloat("Direction", direction.x);
+        }
+        else
+        {
+            animator.SetFloat("Speed", 0);
+            animator.SetFloat("Direction", 0);
+        }
+
+        if (isMove && !IsStaminaEnough(0.1f))
         {
             StartCoroutine(canRunFalse());
         }
@@ -111,9 +170,17 @@ public class PlayerBehaviour : EntityBehaviour
         {
             return;
         }
-
-        body.AddForce(transform.up * jumpPower, ForceMode.Impulse);
+        StartCoroutine(JumpAnim());
         UseStamina(jumpStamina);
+    }
+
+    private IEnumerator JumpAnim()
+    {
+        animator.SetBool("Jump", true);
+        yield return new WaitForSeconds(0.3f);
+        body.AddForce(transform.up * jumpPower, ForceMode.Impulse);
+        yield return new WaitForSeconds(0.1f);
+        animator.SetBool("Jump", false);
     }
 
     private bool isGrounded()
@@ -141,7 +208,7 @@ public class PlayerBehaviour : EntityBehaviour
     private void OnDrawGizmos()
     {
         Vector3 downRay = transform.up * jumpRayLength * -1f ;
-        Vector3 frontRay = transform.forward * (GetComponent<CapsuleCollider>().radius + 1);
+        Vector3 frontRay = transform.forward * frontRange;
         if(debugMode)
         {
             Debug.DrawRay(transform.position, downRay, Color.red);

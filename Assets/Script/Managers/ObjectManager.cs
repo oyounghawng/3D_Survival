@@ -5,13 +5,21 @@ using UnityEngine;
 
 public class ObjectManager
 {
-    
+    private GameObject player;
+
+    public GameObject Player { get => player; }
+
     public ObjectManager()
     {
         Init();
     }
     public void Init()
     {
+        
+    }
 
+    public void SetPlayer(GameObject obj)
+    {
+        player = obj;
     }
 }
