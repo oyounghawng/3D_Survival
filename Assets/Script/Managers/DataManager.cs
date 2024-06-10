@@ -12,10 +12,12 @@ public class DataManager
     //미니게임 데이터
     //public Dictionary<int, LevelExpData> LevelExps { get; private set; } = new Dictionary<int, LevelExpData>();
     public Dictionary<int, CraftItemData> CraftItems { get; private set; } = new Dictionary<int, CraftItemData>();
+    public Dictionary<int, BuildItemData> BuildItems { get; private set; } = new Dictionary<int, BuildItemData>();
     public void Init()
     {
         //LevelExps = LoadJson<LevelExpDataLoader, int, LevelExpData>("LevelExpData").MakeDict();
         CraftItems = LoadJson<CraftItemDataLoader, int, CraftItemData>("CraftItemData").MakeDict();
+        BuildItems = LoadJson<BuildItemDataLoader, int, BuildItemData>("BuildItemData").MakeDict();
     }
 
     public bool Loaded()

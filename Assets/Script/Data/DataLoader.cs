@@ -50,3 +50,30 @@ public class CraftItemDataLoader : ILoader<int, CraftItemData>
         return dic;
     }
 }
+
+[Serializable]
+public class BuildItemData
+{
+    public int Build_Id;
+    public string ItemName;
+    public string ItemInfo;
+    public string NeedItem;
+    public int NeedCost;
+    public string SoPath;
+}
+
+[Serializable]
+public class BuildItemDataLoader : ILoader<int, BuildItemData>
+{
+    public List<BuildItemData> buildItems = new List<BuildItemData>();
+
+    public Dictionary<int, BuildItemData> MakeDict()
+    {
+        Dictionary<int, BuildItemData> dic = new Dictionary<int, BuildItemData>();
+
+        foreach (BuildItemData buildItem in buildItems)
+            dic.Add(buildItem.Build_Id, buildItem);
+
+        return dic;
+    }
+}

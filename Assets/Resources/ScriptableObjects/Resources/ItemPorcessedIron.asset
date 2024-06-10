@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ItemPorcessedIron
   m_EditorClassIdentifier: 
   ID: 0
-  name: Iron
+  name: "\uAC00\uACF5\uB41C \uCCA0"
   desc: "\uAC00\uACF5\uB41C \uCCA0"
   type: 1
   icon: {fileID: 21300000, guid: e1f30a88e4b8c82429a497eef7a6d0ab, type: 3}

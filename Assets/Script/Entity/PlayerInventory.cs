@@ -88,10 +88,11 @@ public class PlayerInventory : MonoBehaviour
     public void Drop(ItemBase item)
     {
         Debug.Log("PlayerInventory::Drop");
-        Managers.Resource.Instantiate($"Resource/{item.name}").transform.position =
+        Managers.Resource.Instantiate(item.prefab).transform.position =
             Managers.UI.FindPopup<UI_Inventory>().dropPos.position + 2 * Vector3.forward + 3 * Vector3.up;
 
         UI_ItemSlot slot = Managers.UI.FindPopup<UI_Inventory>().GetItemSlot(item);
+        Managers.UI.TogglePopupUI<UI_ItemInfo>();
         slot.Clear();
     }
 

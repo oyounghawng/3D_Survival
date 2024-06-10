@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ItemProcessedWood
   m_EditorClassIdentifier: 
   ID: 5
-  name: Wood
+  name: "\uAC00\uACF5\uB41C \uB098\uBB34"
   desc: "\uAC00\uACF5\uB41C \uB098\uBB34"
   type: 1
   icon: {fileID: 21300000, guid: 2b0f2d108a197a94591a964dda1640a8, type: 3}
