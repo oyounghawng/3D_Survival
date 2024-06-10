@@ -35,7 +35,6 @@ public class UI_ItemSlot : UI_Base
         Bind<TextMeshProUGUI>(typeof(Texts));
         Bind<Button>(typeof(Buttons));
 
-        Debug.Log("asd");
         GetImage((int)Images.Icon).sprite = null;
         GetText((int)Texts.Num).text = "";
         GetButton((int)Buttons.UI_ItemSlot)?.gameObject.BindEvent(OnSelect);
