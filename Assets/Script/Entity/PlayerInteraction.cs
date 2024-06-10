@@ -1,4 +1,4 @@
-﻿using TMPro;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,11 +14,9 @@ public class PlayerInteraction : MonoBehaviour
     private IInteractable interactable;
 
     private Camera camera;
-
-    private void Awake()
+    private void Start()
     {
         camera = Camera.main;
-        Managers.Player.PlayerInteraction = this;
     }
     private void Update()
     {
@@ -59,6 +57,7 @@ public class PlayerInteraction : MonoBehaviour
             interactable.OnInteract();
             interactGO = null;
             interactable = null;
+            Managers.UI.FindPopup<UI_Inventory>().UpdateUI();
             (Managers.UI.SceneUI as UI_HUD).promptTextBG.SetActive(false);
         }
     }

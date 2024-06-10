@@ -31,6 +31,8 @@ public class CraftItemData
     public string ItemName;
     public string ItemInfo;
     public string[] NeedItem;
+    public int[] NeedCost;
+    public string SoPath;
 }
 
 [Serializable]

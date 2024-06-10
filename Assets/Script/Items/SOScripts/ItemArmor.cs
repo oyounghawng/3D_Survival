@@ -8,7 +8,6 @@ public class ItemArmor : ItemBase
 }
 public enum ItemArmorType
 {
-    None,
     Helmet,
     ChestPlate,
     Leggings,

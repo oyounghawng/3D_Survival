@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class InputController : InputHandler
 {
     private bool isMove = false;
-
+    private Vector2 lookPos;
     public void OnMove(InputAction.CallbackContext context)
     {
         if(context.phase == InputActionPhase.Started)
@@ -34,21 +34,62 @@ public class InputController : InputHandler
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        Vector2 lookPos = context.ReadValue<Vector2>();
-        CallLookEvent(lookPos);
+        if (!Managers.UI.FindPopup<UI_Inventory>().gameObject.activeSelf)
+        {
+            lookPos = context.ReadValue<Vector2>();
+            CallLookEvent(lookPos);
+        }
+        else
+        {
+            lookPos = Vector2.zero;
+            CallLookEvent(lookPos);
+        }
+
     }
 
     public void OnInventory(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started)
+        if(context.phase == InputActionPhase.Started && 
+           Managers.UI.FindPopup<UI_Inventory>() != null)
         {
-            if(Managers.UI.FindPopup<UI_Inventory>() != null)
-                Managers.UI.TogglePopupUI<UI_Inventory>();
+            if(Managers.UI.TogglePopupUI<UI_Inventory>().gameObject.activeSelf)
+            {
+                if (Cursor.lockState == CursorLockMode.Locked)
+                    Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                if(Cursor.lockState != CursorLockMode.Locked)
+                    Cursor.lockState = CursorLockMode.Locked;
+            }
+            if(Managers.UI.FindPopup<UI_ItemInfo>() != null)
+            {
+                if(Managers.UI.FindPopup<UI_ItemInfo>().gameObject.activeSelf)
+                {
+                    Managers.UI.TogglePopupUI<UI_ItemInfo>();
+                }
+            }
         }
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
         CallAttackEvent();
+    }
+
+    public void OnTools(InputAction.CallbackContext context)
+    {
+        if(Managers.UI.FindPopup<UI_Tools>())
+        {
+            if (Cursor.lockState != CursorLockMode.Locked)
+                Cursor.lockState = CursorLockMode.Locked;
+            Managers.UI.ClosePopupUI();
+        }
+        else
+        {
+            if (Cursor.lockState == CursorLockMode.Locked)
+                Cursor.lockState = CursorLockMode.None;
+            Managers.UI.ShowPopupUI<UI_Tools>();
+        }
     }
 }

@@ -11,14 +11,14 @@ public class PlayerBehaviour : EntityBehaviour
 
     // ���Ŀ� ������ ���̺��� �̿��ؼ� �����ϴ���, ���� csv�� json���� �����ϴ� ��� ã�ƺ��� �ҵ�.
     [Header("JumpState")]
-    [SerializeField] [Range(0f, 10f)] private float jumpPower = 5f;
-    [SerializeField] [Range(0f, 2f)] private float jumpRayLength = 1.2f;
-    [SerializeField] [Range(0f, 20f)] private float jumpStamina;
+    [SerializeField][Range(0f, 10f)] private float jumpPower = 5f;
+    [SerializeField][Range(0f, 2f)] private float jumpRayLength = 1.2f;
+    [SerializeField][Range(0f, 20f)] private float jumpStamina;
     [SerializeField] private LayerMask groundMask;
 
     [Header("LookState")]
-    [SerializeField] [Range(0f, 90f)] private float ViewAngle = 50f;
-    [SerializeField] [Range(0f, 1f)] private float mouseSensitivity = 0.1f;
+    [SerializeField][Range(0f, 90f)] private float ViewAngle = 50f;
+    [SerializeField][Range(0f, 1f)] private float mouseSensitivity = 0.1f;
     private GameObject cameraContainer;
     private float curXRot;
     private Vector2 lookDirection;
@@ -43,10 +43,8 @@ public class PlayerBehaviour : EntityBehaviour
         inputHandler = GetComponent<InputHandler>();
         cameraContainer = Util.FindChild(gameObject, "CameraContainer");
         animator = Util.FindChild<Animator>(gameObject);
-        cam = Camera.main;
-        
-    }
 
+    }
     private void Start()
     {
         inputHandler.OnMoveEvent += GetMoveEvent;
@@ -58,8 +56,7 @@ public class PlayerBehaviour : EntityBehaviour
         conditions = (Managers.UI.SceneUI as UI_HUD).conditions;
         MaxHP = conditions.Get(ConditionType.HP).maxValue;
         curHP = MaxHP;
-
-        Managers.Object.SetPlayer(gameObject);
+        cam = Camera.main;
     }
 
     #region EventCallbackMethod
@@ -80,7 +77,7 @@ public class PlayerBehaviour : EntityBehaviour
 
     private void GetAttackEvent()
     {
-        if(!isAttack)
+        if (!isAttack)
         {
             StartCoroutine(Attack());
         }
@@ -148,7 +145,7 @@ public class PlayerBehaviour : EntityBehaviour
             StartCoroutine(canRunFalse());
         }
 
-        if(curSpeed == runSpeed && isMove && canRun)
+        if (curSpeed == runSpeed && isMove && canRun)
         {
             conditions.Passive(ConditionType.Stamina, 10f, CalType.Substract);
             conditions.Passive(ConditionType.Hunger, 2f, CalType.Substract);
@@ -207,9 +204,9 @@ public class PlayerBehaviour : EntityBehaviour
     // DebugMode
     private void OnDrawGizmos()
     {
-        Vector3 downRay = transform.up * jumpRayLength * -1f ;
+        Vector3 downRay = transform.up * jumpRayLength * -1f;
         Vector3 frontRay = transform.forward * frontRange;
-        if(debugMode)
+        if (debugMode)
         {
             Debug.DrawRay(transform.position, downRay, Color.red);
             Debug.DrawRay(cameraContainer.transform.position, frontRay, Color.green);
