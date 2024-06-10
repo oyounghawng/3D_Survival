@@ -31,6 +31,7 @@ public class UI_ItemSlot : UI_Base
     }
     public override void Init()
     {
+        Debug.Log("ItemSlot Bind");
         Bind<Image>(typeof(Images));
         Bind<TextMeshProUGUI>(typeof(Texts));
         Bind<Button>(typeof(Buttons));

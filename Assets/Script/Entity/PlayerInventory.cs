@@ -33,8 +33,8 @@ public class PlayerInventory : MonoBehaviour
                 case ItemUseStat.Health:
                     (Managers.UI.SceneUI as UI_HUD).conditions.conditionDict[ConditionType.HP].Add(consumables[a].value);
                     break;
-                case ItemUseStat.Stamina:
-                    (Managers.UI.SceneUI as UI_HUD).conditions.conditionDict[ConditionType.Stamina].Add(consumables[a].value);
+                case ItemUseStat.Hunger:
+                    (Managers.UI.SceneUI as UI_HUD).conditions.conditionDict[ConditionType.Hunger].Add(consumables[a].value);
                     break;
             }
         }
@@ -94,12 +94,5 @@ public class PlayerInventory : MonoBehaviour
         UI_ItemSlot slot = Managers.UI.FindPopup<UI_Inventory>().GetItemSlot(item);
         slot.Clear();
     }
-
-    //    private SlotItem GetItemStack(ItemBase item)
-    //    {
-    //        foreach (SlotItem slotItem in items) 
-    //        { 
-    //        }
-    //    }
 
 }

@@ -17,7 +17,7 @@ public enum ItemUseStat
 {
     None,
     Health,     // HP potion
-    Stamina,    // foods
+    Hunger,    // foods
     Power,      // strength potion
     Thickness,  // def potion
 }

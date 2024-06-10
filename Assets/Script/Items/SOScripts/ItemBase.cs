@@ -4,6 +4,8 @@ using System.ComponentModel;
 using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
+
+[CreateAssetMenu(fileName = "ItemBase",menuName ="new ItemBase")]
 public class ItemBase : ScriptableObject
 {
     [Header("Information")]

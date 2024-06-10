@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -33,9 +34,12 @@ public class UI_Inventory : UI_Popup
     public UI_EquipSlot[] equips;
     public Transform dropPos;
 
-    void Start()
+    IEnumerator Start()
     {
         Init();
+        yield return new WaitForEndOfFrame();
+        GetComponent<CanvasGroup>().alpha = 1.0f;
+        gameObject.SetActive(false);
     }
 
     public override void Init()
@@ -49,6 +53,8 @@ public class UI_Inventory : UI_Popup
         dropPos = Managers.Object.Player.gameObject.transform;
         SetInventorySlot();
         GetButton((int)Buttons.ExitBtn).gameObject.BindEvent(OnCloseButton);
+        //Managers.UI.FindPopup<UI_Inventory>().gameObject.SetActive(false);
+//        gameObject.SetActive(false);
     }
     
     void SetInventorySlot()
@@ -60,6 +66,7 @@ public class UI_Inventory : UI_Popup
             UI_ItemSlot ItemSlot = Managers.UI.MakeSubItem<UI_ItemSlot>(go.transform);
             ItemSlot.Idx = i;
             slots[i] = ItemSlot;
+            ItemSlot.gameObject.SetActive(true);
         }
         go = Get<GameObject>((int)GameObjects.Equip);
         equips = new UI_EquipSlot[Enum.GetValues(typeof(EquipType)).Length];

@@ -8,7 +8,8 @@ public class PlayerInteraction : MonoBehaviour
     public float checkRate = 0.5f;
     private float prevCheckTime;
     public float checkDistance = 10f;
-    public LayerMask mask;
+    private LayerMask interactMask;
+    private LayerMask waterMask;
 
     public GameObject interactGO;
     private IInteractable interactable;
@@ -17,6 +18,8 @@ public class PlayerInteraction : MonoBehaviour
     private void Start()
     {
         camera = Camera.main;
+        interactMask = LayerMask.GetMask("Interactable") + LayerMask.GetMask("Ground");
+        waterMask = LayerMask.GetMask("Water");
     }
     private void Update()
     {
@@ -25,8 +28,13 @@ public class PlayerInteraction : MonoBehaviour
             prevCheckTime = Time.time;
             Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
             RaycastHit hit;
-            if(Physics.Raycast(ray,out hit,checkDistance,mask))
+            if(Physics.Raycast(ray,out hit,checkDistance,interactMask+waterMask))
             {
+                if (hit.collider.gameObject.GetComponent<ItemObject>() == null)
+                {
+                    (Managers.UI.SceneUI as UI_HUD).promptTextBG.SetActive(false);
+                    return;
+                }
                 if(hit.collider.gameObject != interactGO)
                 {
                     interactGO = hit.collider.gameObject;
@@ -34,7 +42,7 @@ public class PlayerInteraction : MonoBehaviour
                     SetPromptText(interactable.GetData());
                 }
             }
-            else
+            else 
             {
                 interactGO = null;
                 interactable = null;
@@ -54,11 +62,18 @@ public class PlayerInteraction : MonoBehaviour
     {
         if(context.phase == InputActionPhase.Started && interactable != null)
         {
-            interactable.OnInteract();
+            if(interactGO.GetComponent<ItemObject>().item.name != "Water")
+            {
+                interactable.OnInteract();
+            }
+            else
+            {
+                (Managers.UI.SceneUI as UI_HUD).conditions.conditionDict[ConditionType.Water].Add(10);
+            }
             interactGO = null;
             interactable = null;
             Managers.UI.FindPopup<UI_Inventory>().UpdateUI();
-            (Managers.UI.SceneUI as UI_HUD).promptTextBG.SetActive(false);
+                (Managers.UI.SceneUI as UI_HUD).promptTextBG.SetActive(false);
         }
     }
 }
