@@ -40,10 +40,26 @@ public class InputController : InputHandler
 
     public void OnInventory(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started)
+        if(context.phase == InputActionPhase.Started && 
+           Managers.UI.FindPopup<UI_Inventory>() != null)
         {
-            if(Managers.UI.FindPopup<UI_Inventory>() != null)
-                Managers.UI.TogglePopupUI<UI_Inventory>();
+            if(Managers.UI.TogglePopupUI<UI_Inventory>().gameObject.activeSelf)
+            {
+                if (Cursor.lockState == CursorLockMode.Locked)
+                    Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                if(Cursor.lockState != CursorLockMode.Locked)
+                    Cursor.lockState = CursorLockMode.Locked;
+            }
+            if(Managers.UI.FindPopup<UI_ItemInfo>() != null)
+            {
+                if(Managers.UI.FindPopup<UI_ItemInfo>().gameObject.activeSelf)
+                {
+                    Managers.UI.TogglePopupUI<UI_ItemInfo>();
+                }
+            }
         }
     }
 

@@ -229,7 +229,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idx: 0
   item: {fileID: 0}
-  inventory: {fileID: 0}
   quantity: 0
   default_icon: {fileID: 0}
 --- !u!1 &8244472875728852066

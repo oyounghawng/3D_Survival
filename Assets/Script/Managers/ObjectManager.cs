@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class ObjectManager
 {
-    private GameObject player;
-    public GameObject Player { get => player; }
+    private Player player;
+
+    public Player Player { get => player; set { player = value; } }
 
     public ObjectManager()
     {
