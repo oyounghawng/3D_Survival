@@ -6,7 +6,6 @@ using UnityEngine;
 public class ObjectManager
 {
     private GameObject player;
-
     public GameObject Player { get => player; }
 
     public ObjectManager()
@@ -18,8 +17,10 @@ public class ObjectManager
         
     }
 
-    public void SetPlayer(GameObject obj)
+    public void SpawnPlayer()
     {
-        player = obj;
+        GameObject go = Managers.Resource.Instantiate("Player");
+        player = go;
+        Managers.Resource.Instantiate("CameraContains");
     }
 }

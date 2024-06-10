@@ -28,6 +28,7 @@ public class PlayerInventory : MonoBehaviour
         itemInfo = Managers.UI.ShowPopupUI<UI_ItemInfo>(Enum.GetName(typeof(UI_Popups),(int)UI_Popups.UI_ItemInfo));
         Managers.Player.Inventory = this;
         addItem += inventory.AddItem;
+        Managers.UI.TogglePopupUI<UI_Inventory>().dropPos = this.gameObject.transform;
     }
 
     public void Equip(ItemBase item)

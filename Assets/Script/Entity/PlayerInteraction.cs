@@ -14,11 +14,13 @@ public class PlayerInteraction : MonoBehaviour
     private IInteractable interactable;
 
     private Camera camera;
-
     private void Awake()
     {
-        camera = Camera.main;
         Managers.Player.PlayerInteraction = this;
+    }
+    private void Start()
+    {
+        camera = Camera.main;
     }
     private void Update()
     {
