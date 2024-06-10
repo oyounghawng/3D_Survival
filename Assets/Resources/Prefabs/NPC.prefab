@@ -1989,7 +1989,9 @@ MonoBehaviour:
   curHP: 0
   moveSpeed: 1
   runSpeed: 2
-  dropOnDeath: []
+  dropOnDeath:
+  - {fileID: 11400000, guid: b0d62fe1811294a41925c206fcedc63a, type: 2}
+  - {fileID: 11400000, guid: 2baeeebb383da934f8a8ba28f80c93e0, type: 2}
   detectDistance: 5
   minWanderDistance: 5
   maxWanderDistance: 10
