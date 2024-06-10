@@ -18,7 +18,6 @@ public class PlayerInteraction : MonoBehaviour
     private void Awake()
     {
         camera = Camera.main;
-        Managers.Player.PlayerInteraction = this;
     }
     private void Update()
     {

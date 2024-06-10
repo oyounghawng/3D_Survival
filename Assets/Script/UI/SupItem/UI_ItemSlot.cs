@@ -9,14 +9,12 @@ public class UI_ItemSlot : UI_Base
 {
     [SerializeField] private int idx;
     public ItemBase item;              // Item data
-    public UIInventory inventory;
-    private UnityAction btnAction;
     public int quantity;
     public int Idx { get { return idx; } set { idx = value; } }
 
     enum Buttons
     {
-        UI_ItemSlot
+        UI_ItemSlot,
     }
     enum Images
     {
@@ -38,7 +36,7 @@ public class UI_ItemSlot : UI_Base
 
         GetImage((int)Images.Icon).sprite = null;
         GetText((int)Texts.Num).text = "";
-        GetButton((int)Buttons.UI_ItemSlot).gameObject.BindEvent(OnSelect);
+        GetButton((int)Buttons.UI_ItemSlot)?.gameObject.BindEvent(OnSelect);
 
     }
     public virtual void Set()
@@ -54,10 +52,10 @@ public class UI_ItemSlot : UI_Base
     }
     public virtual void Clear()
     {
-
-        if (item == null)
+        if (!item)
         {
             GetImage((int)Images.Icon).gameObject.SetActive(false);
+            GetText((int)Texts.Num).text = string.Empty;
             return;
         }
         if (item.type is ItemType.Resource or ItemType.Use)
@@ -66,9 +64,21 @@ public class UI_ItemSlot : UI_Base
     }
     public void OnSelect(PointerEventData evt)
     {
+        if (item == null)
+            return;
         UI_ItemInfo itemInfo = Managers.UI.TogglePopupUI<UI_ItemInfo>();
         Debug.Log("Select");
+        itemInfo.SelectItem(item);
         itemInfo.SetTransform(transform.position);
-        itemInfo.SetText(item);
+    }
+    public void SubItem()
+    {
+        quantity--;
+        if(quantity <=0)
+        {
+            item = null;
+            GetImage((int)Images.Icon).sprite = null;
+            GetText((int)Texts.Num).text = "";
+        }
     }
 }

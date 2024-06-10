@@ -58,8 +58,6 @@ public class PlayerBehaviour : EntityBehaviour
         conditions = (Managers.UI.SceneUI as UI_HUD).conditions;
         MaxHP = conditions.Get(ConditionType.HP).maxValue;
         curHP = MaxHP;
-
-        Managers.Object.SetPlayer(gameObject);
     }
 
     #region EventCallbackMethod

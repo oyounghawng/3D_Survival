@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ItemExcalib
   m_EditorClassIdentifier: 
   ID: 3
-  name: "\uC5D1\uC2A4\uCE7C\uB9AC\uBC84"
+  name: Sword_01
   desc: "\uC120\uD0DD\uBC1B\uC740\uC6A9\uC0AC\uB9CC \uC0AC\uC6A9\uD560 \uC218 \uC788\uB2E4."
   type: 4
   icon: {fileID: 21300000, guid: 4f2f320a217307a48a107491b1d17ebb, type: 3}
