@@ -123,8 +123,33 @@ public class UI_Inventory : UI_Popup
         }
         Debug.Log("Cannot hold Item due to inventory storage");
         return;
-
     }
+    public void AddCraftItem(ItemBase item)
+    {
+        if (item.canStack)
+        {
+            UI_ItemSlot slot = GetItemSlot(item);
+            if (slot is not null)
+            {
+                slot.quantity++;
+                item = null;
+                UpdateUI();
+                return;
+            }
+        }
+        UI_ItemSlot empty = GetEmptyItemSlot();
+        if (empty != null)
+        {
+            empty.item = item;
+            empty.quantity = 1;
+            item = null;
+            UpdateUI();
+            return;
+        }
+        Debug.Log("Cannot hold Item due to inventory storage");
+        return;
+    }
+
     public UI_ItemSlot GetItemSlot(ItemBase selItem)
     {
         foreach (UI_ItemSlot slot in slots)

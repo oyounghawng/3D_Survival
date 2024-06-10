@@ -11,11 +11,6 @@ public class UI_HUD : UI_Scene
     public TextMeshProUGUI promptText;
     public GameObject promptTextBG;
 
-    enum Buttons
-    {
-        Craft
-    }
-
     enum BG
     {
         PromptTextBG
@@ -38,16 +33,9 @@ public class UI_HUD : UI_Scene
         base.Init();
         Bind<TextMeshProUGUI>(typeof(Texts));
         Bind<GameObject>(typeof(BG));
-        Bind<Button>(typeof(Buttons));
 
 //        GetText((int)Texts.PromptText).text = "";
 //        Get<GameObject>((int)GameObjects.PromptTextBG).SetActive(true);
 //        Debug.Log("Test");
-    }
-
-    [ContextMenu("asd")]
-    private void OpenCraft()
-    {
-        Managers.UI.ShowPopupUI<UI_Craft>();
     }
 }

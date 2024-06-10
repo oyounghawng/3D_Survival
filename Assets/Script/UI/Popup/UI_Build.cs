@@ -10,7 +10,6 @@ public class UI_Build : UI_Popup
     }
     enum Buttons
     {
-        ExitBtn
     }
     enum Images
     {
@@ -30,10 +29,14 @@ public class UI_Build : UI_Popup
         Bind<GameObject>(typeof(GameObjects));
         Bind<TextMeshProUGUI>(typeof(Texts));
         Bind<Image>(typeof(Images));
-    }
 
+        if (Cursor.lockState == CursorLockMode.Locked)
+            Cursor.lockState = CursorLockMode.None;
+    }
     void OnCloseButton(PointerEventData evt)
     {
-        Managers.UI.TogglePopupUI<UI_Inventory>();
+        if (Cursor.lockState != CursorLockMode.Locked)
+            Cursor.lockState = CursorLockMode.Locked;
+        Managers.UI.ClosePopupUI();
     }
 }

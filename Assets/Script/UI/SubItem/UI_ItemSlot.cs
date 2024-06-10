@@ -52,15 +52,14 @@ public class UI_ItemSlot : UI_Base
     }
     public virtual void Clear()
     {
-        if (!item)
-        {
-            GetImage((int)Images.Icon).gameObject.SetActive(false);
-            GetText((int)Texts.Num).text = string.Empty;
-            return;
-        }
+        item = null;
+        GetImage((int)Images.Icon).gameObject.SetActive(false);
+        GetText((int)Texts.Num).text = string.Empty;
+        /*
         if (item.type is ItemType.Resource or ItemType.Use)
             GetText((int)Texts.Num).text = quantity.ToString();
-
+        */
+        return;
     }
     public void OnSelect(PointerEventData evt)
     {
@@ -74,7 +73,7 @@ public class UI_ItemSlot : UI_Base
     public void SubItem()
     {
         quantity--;
-        if(quantity <=0)
+        if (quantity <= 0)
         {
             item = null;
             GetImage((int)Images.Icon).sprite = null;

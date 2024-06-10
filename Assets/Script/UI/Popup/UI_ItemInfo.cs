@@ -99,6 +99,18 @@ public class UI_ItemInfo : UI_Popup
             case ItemType.Armor:
             case ItemType.Tool:
             case ItemType.Resource:
+                {
+                    SetBtn((int)Buttons.UseBtn, false);
+                    SetBtn((int)Buttons.EquipBtn, false);
+                    SetBtn((int)Buttons.UnEquipBtn, false);
+                    SetBtn((int)Buttons.DropBtn, true);
+
+                    GetText((int)Texts.ItemName).text = item.name + " [" + Enum.GetName(typeof(ItemType), item.type) + "]";
+                    GetText((int)Texts.ItemDesc).text = item.desc;
+                    GetText((int)Texts.ItemStat).text = "";
+                    GetText((int)Texts.StatValue).text = "";
+                }
+                break;
             default:
                 break;
         }

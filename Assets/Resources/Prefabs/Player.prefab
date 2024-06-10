@@ -1902,6 +1902,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2ed2d29a-7285-4305-8dca-5a8832ddd0bb
     m_ActionName: Player/Interaction[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4009263218175156753}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: OnTools
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 257d383c-6add-4cb0-bc19-53a13cd7ab55
+    m_ActionName: Player/Tools[/Keyboard/tab]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player

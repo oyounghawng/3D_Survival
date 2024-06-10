@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7693263115150716218}
   - component: {fileID: 6741513716257828650}
   - component: {fileID: 3818598081591413921}
-  - component: {fileID: 1819734782188557017}
-  - component: {fileID: 6514949932363219994}
   - component: {fileID: 130711175774238886}
+  - component: {fileID: 6514949932363219994}
+  - component: {fileID: 1819734782188557017}
   m_Layer: 8
   m_Name: Ax_01
   m_TagString: Untagged
@@ -86,19 +86,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1819734782188557017
-MonoBehaviour:
+--- !u!65 &130711175774238886
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2217085745683041775}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a531ccdd2b6852840a2222c6c4a38c5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 646e44a281449d94a956a19344e47fc1, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 0.38201615, y: 0.8473046, z: 0.13167858}
+  m_Center: {x: -0.07051782, y: 0.16591479, z: -0.00000016018748}
 --- !u!54 &6514949932363219994
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -126,24 +134,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &130711175774238886
-BoxCollider:
+--- !u!114 &1819734782188557017
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2217085745683041775}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.38201615, y: 0.8473046, z: 0.13167858}
-  m_Center: {x: -0.07051782, y: 0.16591479, z: -0.00000016018748}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a531ccdd2b6852840a2222c6c4a38c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 646e44a281449d94a956a19344e47fc1, type: 2}
