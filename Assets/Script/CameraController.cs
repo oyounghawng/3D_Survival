@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
     }
     private void Start()
     {
-        cvCamera.Follow = Util.FindChild(Managers.Object.Player, "CameraContainer", true).transform;
-        cvCamera.LookAt = Util.FindChild(Managers.Object.Player, "CameraLook", true).transform;
+        cvCamera.Follow = Util.FindChild(Managers.Object.Player.gameObject, "CameraContainer", true).transform;
+        cvCamera.LookAt = Util.FindChild(Managers.Object.Player.gameObject, "CameraLook", true).transform;
     }
 }

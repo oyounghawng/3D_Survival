@@ -21,7 +21,7 @@ public class ObjectManager
     public void SpawnPlayer()
     {
         GameObject go = Managers.Resource.Instantiate("Player");
-        player = go;
+        player = go.GetComponent<Player>();
         Managers.Resource.Instantiate("CameraContains");
     }
 }

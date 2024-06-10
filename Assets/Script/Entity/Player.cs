@@ -25,7 +25,6 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        Managers.Object.Player = this;
         playerBehaviour = GetComponent<PlayerBehaviour>();
         playerInventory = GetComponent<PlayerInventory>();
         playerInteraction = GetComponent<PlayerInteraction>();

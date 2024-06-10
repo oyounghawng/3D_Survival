@@ -46,16 +46,11 @@ public class UI_Inventory : UI_Popup
         Bind<TextMeshProUGUI>(typeof(Texts));
         Bind<Image>(typeof(Images));
 
+        dropPos = Managers.Object.Player.gameObject.transform;
         SetInventorySlot();
         GetButton((int)Buttons.ExitBtn).gameObject.BindEvent(OnCloseButton);
-        //        Managers.UI.ShowPopupUI<UI_Inventory>("UI_Inventory");
-        //        Managers.UI.TogglePopupUI<UI_Inventory>();
-
-        dropPos = Managers.Object.Player.gameObject.transform;
-        ShowStatus();
-        gameObject.SetActive(false);
-    }   
-
+    }
+    
     void SetInventorySlot()
     {
         GameObject go = Get<GameObject>((int)GameObjects.ItemBag);
@@ -68,7 +63,7 @@ public class UI_Inventory : UI_Popup
         }
         go = Get<GameObject>((int)GameObjects.Equip);
         equips = new UI_EquipSlot[Enum.GetValues(typeof(EquipType)).Length];
-        for(int a=0; a<equips.Length; a++)
+        for (int a = 0; a < equips.Length; a++)
         {
             UI_EquipSlot equipSlot = go.transform.GetChild(a).GetComponent<UI_EquipSlot>();
             equipSlot.Idx = a;
@@ -81,7 +76,7 @@ public class UI_Inventory : UI_Popup
     void OnCloseButton(PointerEventData evt)
     {
         Managers.UI.TogglePopupUI<UI_Inventory>();
-        if(Cursor.lockState != CursorLockMode.Locked)
+        if (Cursor.lockState != CursorLockMode.Locked)
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -89,9 +84,9 @@ public class UI_Inventory : UI_Popup
 
     public void UpdateUI()
     {
-        foreach(var slot in slots)
+        foreach (var slot in slots)
         {
-            if(slot.item)
+            if (slot.item)
             {
                 slot.Set();
             }
@@ -106,10 +101,10 @@ public class UI_Inventory : UI_Popup
     public void AddItem()
     {
         ItemBase selItem = Managers.Object.Player.PlayerInteraction.interactGO.GetComponent<ItemObject>().item;
-        if(selItem.canStack)
+        if (selItem.canStack)
         {
             UI_ItemSlot slot = GetItemSlot(selItem);
-            if(slot is not null)
+            if (slot is not null)
             {
                 slot.quantity++;
                 selItem = null;
@@ -118,7 +113,7 @@ public class UI_Inventory : UI_Popup
             }
         }
         UI_ItemSlot empty = GetEmptyItemSlot();
-        if(empty != null)
+        if (empty != null)
         {
             empty.item = selItem;
             empty.quantity = 1;
@@ -134,7 +129,7 @@ public class UI_Inventory : UI_Popup
     {
         foreach (UI_ItemSlot slot in slots)
         {
-            if(slot.item == selItem && (selItem.canStack? slot.quantity< selItem.maxStackAmount : true))
+            if (slot.item == selItem && (selItem.canStack ? slot.quantity < selItem.maxStackAmount : true))
             {
                 return slot;
             }
@@ -143,7 +138,7 @@ public class UI_Inventory : UI_Popup
     }
     public UI_ItemSlot GetEmptyItemSlot()
     {
-        foreach(UI_ItemSlot slot in slots)
+        foreach (UI_ItemSlot slot in slots)
         {
             if (!slot.item)
                 return slot;
@@ -159,7 +154,7 @@ public class UI_Inventory : UI_Popup
     }
     public UI_EquipSlot GetEquipSlot(EquipType equipType)
     {
-        foreach(UI_EquipSlot slot in equips)
+        foreach (UI_EquipSlot slot in equips)
         {
             if (slot.equipType == equipType)
                 return slot;

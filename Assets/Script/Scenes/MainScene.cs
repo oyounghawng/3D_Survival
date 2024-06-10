@@ -19,6 +19,7 @@ public class MainScene : BaseScene
 
         Managers.UI.ShowSceneUI<UI_HUD>();
         Managers.Object.SpawnPlayer();
+
     }
     public override void Clear()
     {

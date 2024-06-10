@@ -14,10 +14,6 @@ public class PlayerInteraction : MonoBehaviour
     private IInteractable interactable;
 
     private Camera camera;
-    private void Awake()
-    {
-        Managers.Player.PlayerInteraction = this;
-    }
     private void Start()
     {
         camera = Camera.main;
@@ -61,6 +57,7 @@ public class PlayerInteraction : MonoBehaviour
             interactable.OnInteract();
             interactGO = null;
             interactable = null;
+            Managers.UI.FindPopup<UI_Inventory>().UpdateUI();
             (Managers.UI.SceneUI as UI_HUD).promptTextBG.SetActive(false);
         }
     }
