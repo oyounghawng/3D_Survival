@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class MapResourcesEditer : MonoBehaviour
 {
+    public static MapResourcesEditer instace;
     float Width = 50f;
     float Length = 50f;
 
@@ -13,36 +13,69 @@ public class MapResourcesEditer : MonoBehaviour
     private GameObject Rock;
 
     public Transform[] point;
-
-    private List<Vector3> spawnPos;
+    public List<GameObject> spawnPos;
+    private void Awake()
+    {
+        instace = this;
+    }
     private void Start()
     {
-        spawnPos = new List<Vector3>();
+        spawnPos = new List<GameObject>();
         Tree = Managers.Resource.Load<GameObject>("Prefabs/Resource/Tree");
         NPC = Managers.Resource.Load<GameObject>("Prefabs/Resource/NPC");
         Rock = Managers.Resource.Load<GameObject>("Prefabs/Resource/Rock");
+
+        for (int i = 0; i < 5; i++)
+        {
+            Generate(Define.Resources.Tree);
+            Generate(Define.Resources.Rock);
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            Generate(Define.Resources.NPC);
+        }
+    }
+    public void ReGnerate(Define.Resources resources)
+    {
+        StartCoroutine(WaitGenerate(resources));
     }
 
-    [ContextMenu("Asd")]
-    private void Generate()
+    IEnumerator WaitGenerate(Define.Resources resources)
+    {
+        yield return new WaitForSeconds(20f);
+        Generate(resources);
+    }
+    public void Generate(Define.Resources resources)
     {
         int idx = Random.Range(0, 4);
         Transform selectPoisition = point[idx];
-
-
         Vector3 Spawn = selectPoisition.position;
         Spawn += SpwanPoint(selectPoisition.GetComponent<GenerateFloat>().radius);
-        foreach (Vector3 pos in spawnPos)
+        foreach (GameObject pos in spawnPos)
         {
-            if(Vector3.Distance(pos,Spawn) <=   4f)
+            if (Vector3.Distance(pos.transform.position, Spawn) <= 4f)
             {
-                Generate();
+                Generate(resources);
                 return;
             }
         }
 
-        spawnPos.Add(Spawn);
-        Managers.Resource.Instantiate(Tree).transform.position = Spawn;
+        GameObject go = null;
+        switch (resources)
+        {
+            case Define.Resources.Tree:
+                go = Tree;
+                break;
+            case Define.Resources.Rock:
+                go = Rock;
+                break;
+            case Define.Resources.NPC:
+                go = NPC;
+                break;
+        }
+        GameObject go1 = Managers.Resource.Instantiate(go);
+        go1.transform.position = Spawn;
+        spawnPos.Add(go1);
     }
     private Vector3 SpwanPoint(float radius)
     {

@@ -211,7 +211,8 @@ public class NPC : EntityBehaviour
         {
             Instantiate(dropOnDeath[i].prefab, transform.position + Vector3.up * 2, Quaternion.identity);
         }
-
+        MapResourcesEditer.instace.spawnPos.Remove(this.gameObject);
+        MapResourcesEditer.instace.ReGnerate(Define.Resources.NPC);
         Destroy(gameObject);
     }
 

@@ -10,6 +10,7 @@ public class Resource : MonoBehaviour, IDamagable
     [SerializeField] private float MaxHP;
     private float nowHP;
 
+    public Define.Resources resourceType;
     private void Awake()
     {
         nowHP = MaxHP;
@@ -29,6 +30,8 @@ public class Resource : MonoBehaviour, IDamagable
 
         if(isDie())
         {
+            MapResourcesEditer.instace.spawnPos.Remove(this.gameObject);
+            MapResourcesEditer.instace.ReGnerate(resourceType);
             Destroy(gameObject);
         }
 

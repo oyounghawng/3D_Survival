@@ -15,12 +15,13 @@ public class ObjectManager
     }
     public void Init()
     {
-        
+
     }
 
     public void SpawnPlayer()
     {
         GameObject go = Managers.Resource.Instantiate("Player");
+        go.transform.position = new Vector3(30f, 2f, 4f);
         player = go.GetComponent<Player>();
         Managers.Resource.Instantiate("CameraContains");
     }
