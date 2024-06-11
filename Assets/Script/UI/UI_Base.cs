@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public abstract class UI_Base : MonoBehaviour
 {
     protected Dictionary<Type, UnityEngine.Object[]> _objects = new Dictionary<Type, UnityEngine.Object[]>();
-    public abstract void Init();
+    public abstract void Init(); // this should be invoked in Start not Awake
 
     private void Start()
     {

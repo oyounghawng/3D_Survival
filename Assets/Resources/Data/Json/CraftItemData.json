@@ -1,0 +1,52 @@
+{
+  "craftItems": [
+    {
+      "Craft_Id" : 0,
+      "ItemName" : "나무막대",
+      "ItemInfo" : "기초적인 생활에 이용될 나무막대기",
+      "NeedItem" : ["나무","",""],
+      "NeedCost" : [1,0,0],
+      "SoPath" : "ScriptableObjects/Resources/ItemProcessedWood"
+    },
+    {
+      "Craft_Id" : 1,
+      "ItemName" : "가공된 돌",
+      "ItemInfo" : "기초적인 생활에 이용될 돌",
+      "NeedItem" : ["돌","",""],
+      "NeedCost" : [1,0,0],
+      "SoPath" : "ScriptableObjects/Resources/ItemPorcessedRock"
+    },
+    {
+      "Craft_Id" : 2,
+      "ItemName" : "가공된 철",
+      "ItemInfo" : "중급 생활에 이용될 철",
+      "NeedItem" : ["철","",""],
+      "NeedCost" : [1,0,0],
+      "SoPath" : "ScriptableObjects/Resources/ItemPorcessedIron"
+    },
+    {
+      "Craft_Id" : 3,
+      "ItemName" : "가공된 금",
+      "ItemInfo" : "고급 생활에 이용될 금",
+      "NeedItem" : ["금","",""],
+      "NeedCost" : [1,0,0],
+      "SoPath" : "ScriptableObjects/Resources/ItemProcessedGold"	
+    },
+    {
+      "Craft_Id" : 4,
+      "ItemName" : "도끼",
+      "ItemInfo" : "채집에 사용되는 도끼",
+      "NeedItem" : ["나무","돌",""],
+      "NeedCost" : [1,1,0],
+      "SoPath" : "ScriptableObjects/Tools/ItemAx"	
+    },
+    {
+      "Craft_Id" : 5,
+      "ItemName" : "엑스칼리버",
+      "ItemInfo" : "전투에 사용되는 칼",
+      "NeedItem" : ["나무","철",""],
+      "NeedCost" : [1,1,0],
+      "SoPath" : "ScriptableObjects/Weapon/ItemExcalib"	
+    }
+  ]
+}

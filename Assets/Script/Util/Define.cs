@@ -7,11 +7,9 @@ public class Define : MonoBehaviour
     public enum SceneType
     {
         Unknown,
-        LogoScene,
-        LobbyScene,
-        GameScene,
+        TitleScene,
+        MainScene,
     }
-
     public enum Sound
     {
         Bgm,
@@ -27,5 +25,17 @@ public class Define : MonoBehaviour
         BeginDrag,
         Drag,
         EndDrag
+    }
+    public enum Resources
+    {
+        Rock,
+        Tree,
+        NPC,
+    }
+    public enum LayerMask
+    {
+        Ground = 6,
+        Wall,
+
     }
 }

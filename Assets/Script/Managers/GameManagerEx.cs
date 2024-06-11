@@ -1,12 +1,19 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
 [Serializable]
 public class GameData
 {
-    public bool BGMOn;
-    public bool EffectSoundOn;
+    public bool BGMon = true;
+    public bool EffectSoundon = true;
+    public int CharacterIdx;
+    public GameData()
+    {
+        BGMon = true;
+        EffectSoundon = true;
+    }
 }
 
 public class GameManagerEx
@@ -17,14 +24,14 @@ public class GameManagerEx
     #region Option
     public bool BGMOn
     {
-        get { return _gameData.BGMOn; }
-        set { _gameData.BGMOn = value; }
+        get { return _gameData.BGMon; }
+        set { _gameData.BGMon = value; }
     }
 
     public bool EffectSoundOn
     {
-        get { return _gameData.EffectSoundOn; }
-        set { _gameData.EffectSoundOn = value; }
+        get { return _gameData.EffectSoundon; }
+        set { _gameData.EffectSoundon = value; }
     }
     #endregion
 
