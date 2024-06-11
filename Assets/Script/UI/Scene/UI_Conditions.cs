@@ -45,7 +45,6 @@ public class UI_Conditions : MonoBehaviour
         Passive(ConditionType.Stamina, 1f, CalType.Add);
         Passive(ConditionType.Hunger, 0.5f, CalType.Substract);
         Passive(ConditionType.Water, 0.5f, CalType.Substract);
-        Passive(ConditionType.HP, 0.5f, CalType.Substract);
     }
 
     public void Passive(ConditionType conditionType, float value, CalType calType)
