@@ -41,50 +41,24 @@
 
 |시작 화면|
 |:------:|
-|![1](https://github.com/yjkim-npl/W5_TP/blob/main/ReadMeImage/1.PNG)|
-|[시작 버튼 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/GS.cs) 눌러서 구경가기|
-|[종료 버튼 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/GE.cs) 눌러서 구경가기|
+|![TitleScene](https://github.com/oyounghawng/3D_Survival/assets/69491656/8f5cf0a0-f2bb-4e92-b4e7-5207bb49f41e)
+|
 
-|난이도 선택|놀이 방식 선택|
+|기본 UI| 상호작용 가능할 때 |
 |:------:|:------:|
-|![2](https://github.com/yjkim-npl/W5_TP/blob/main/ReadMeImage/2.PNG)|![3](https://github.com/yjkim-npl/W5_TP/blob/main/ReadMeImage/3.PNG)|
-|[정보 저장 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/DM.cs) 눌러서 구경가기|[정보 저장 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/DM.cs) 눌러서 구경가기|
-|[선택창 관련 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/SSG.cs) 눌러서 구경가기|[선택창 관련 플레이 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/SSG.cs) 눌러서 구경가기|
-|[선택창 UI Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/SSUI.cs) 눌러서 구경가기|[선택창 UI Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/SSUI.cs) 눌러서 구경가기|
+|![UI_default](https://github.com/oyounghawng/3D_Survival/assets/69491656/60af72cd-062d-4ac2-99fa-9d653ada9914) |![Interactable](https://github.com/oyounghawng/3D_Survival/assets/69491656/9e9651db-4572-409a-8f64-5606e4b58c52) |
+|기본 UI: 체력, 배고픔, 수분, 기력| 목재랑 상호작용 가능한 상황|
 
-|공룡 선택(혼자 놀기)|공룡 선택(둘이 놀기)|
-|:------:|:------:|
-|![4_1](https://github.com/yjkim-npl/W5_TP/blob/main/ReadMeImage/4_1.PNG)|![4_2](https://github.com/yjkim-npl/W5_TP/blob/main/ReadMeImage/4_2.PNG)|
-|[정보 저장 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/DM.cs) 눌러서 구경가기|[정보 저장 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/DM.cs) 눌러서 구경가기|
-|[선택창 관련 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/SSG.cs) 눌러서 구경가기|[선택창 관련 플레이 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/SSG.cs) 눌러서 구경가기|
-|[선택창 UI Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/SSUI.cs) 눌러서 구경가기|[선택창 UI Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/SSUI.cs) 눌러서 구경가기|
 
-|이름 입력(혼자 놀기)|이름 입력(둘이 놀기)|
-|:------:|:------:|
-|![5_1](https://github.com/yjkim-npl/W5_TP/blob/main/ReadMeImage/5_1.PNG)|![5_2](https://github.com/yjkim-npl/W5_TP/blob/main/ReadMeImage/5_2.PNG)|
-|[정보 저장 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/DM.cs) 눌러서 구경가기|[정보 저장 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/DM.cs) 눌러서 구경가기|
-|[선택창 관련 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/SSG.cs) 눌러서 구경가기|[선택창 관련 플레이 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/SSG.cs) 눌러서 구경가기|
-|[선택창 UI Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/SSUI.cs) 눌러서 구경가기|[선택창 UI Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/SSUI.cs) 눌러서 구경가기|
 
-|놀이 화면(혼자 놀기)|놀이 화면(둘이 놀기)|
-|:------:|:------:|
-|![6_1](https://github.com/yjkim-npl/W5_TP/blob/main/ReadMeImage/6_1.PNG)|![6_2](https://github.com/yjkim-npl/W5_TP/blob/main/ReadMeImage/6_2.PNG)|
-|[움직임 입력 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/PICS.cs) 눌러서 구경가기|[움직임 입 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/PICS.cs) 눌러서 구경가기|
-|[움직임 구현 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/PMS.cs) 눌러서 구경가기|[움직임 구현 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/PMS.cs) 눌러서 구경가기|
-|[애니메이션 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/CAC.cs) 눌러서 구경가기|[애니메이션 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/CAC.cs) 눌러서 구경가기|
-|[놀이 진행 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/GMS.cs) 눌러서 구경가기|[놀이 진행 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/GMS.cs) 눌러서 구경가기|
 
-|일시 정지 메뉴|음량 조절 메뉴|
+|인벤토리|건축|
 |:------:|:------:|
-|![7_1](https://github.com/yjkim-npl/W5_TP/blob/main/ReadMeImage/7_1.PNG)|![7_2](https://github.com/yjkim-npl/W5_TP/blob/main/ReadMeImage/7_2.PNG)|
-|[설정 이동 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/PB.cs) 눌러서 구경가기|[설정 이동 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/PB.cs) 눌러서 구경가기|
-|[오디오 믹서 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/AMC.cs) 눌러서 구경가기|[오디오 믹서 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/AMC.cs) 눌러서 구경가기|
+|![Inventory](https://github.com/oyounghawng/3D_Survival/assets/69491656/e75b1e85-18b1-4bf3-a8ae-b6f3a1a596f7) | ![Build](https://github.com/oyounghawng/3D_Survival/assets/69491656/e8ef4060-db4d-48de-ae29-d5239f27a22b) |
+|목재를 얻은 후 인벤토리에서 목재 확인| 목재를 가공 후 설치할떄 설치 예시를 보여줌| 
 
-|놀이 종료(혼자 놀기)|놀이 종료(둘이 놀기)|
-|:------:|:------:|
-|![8_1](https://github.com/yjkim-npl/W5_TP/blob/main/ReadMeImage/8_1.PNG)|![8_2](https://github.com/yjkim-npl/W5_TP/blob/main/ReadMeImage/8_2.PNG)|
-|[설정 이동 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/PB.cs) 눌러서 구경가기|[설정 이동 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/PB.cs) 눌러서 구경가기|
-|[놀이 진행 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/GMS.cs) 눌러서 구경가기|[놀이 진행 Script](https://github.com/yjkim-npl/W5_TP/blob/main/Assets/Scripts/GMS.cs) 눌러서 구경가기|
+
+
 
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=FAAC58&height=120&section=footer" />
