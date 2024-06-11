@@ -59,7 +59,7 @@ public class BuildItemData
     public string ItemInfo;
     public string NeedItem;
     public int NeedCost;
-    public string SoPath;
+    public string PrefabPath;
 }
 
 [Serializable]

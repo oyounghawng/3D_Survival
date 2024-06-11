@@ -6,7 +6,7 @@
       "ItemInfo" : "기초적인 생활에 이용될 나무막대기",
       "NeedItem" : "가공된 나무",
       "NeedCost" : 1,
-      "SoPath" : "ScriptableObjects/Resources/ItemProcessedWood"
+      "PrefabPath" : "Build/WoodBlockPreview"
     },
     {
       "Build_Id" : 1,
@@ -14,7 +14,7 @@
       "ItemInfo" : "기초적인 생활에 이용될 돌",
       "NeedItem" : "가공된 돌",
       "NeedCost" : 1,
-      "SoPath" : "ScriptableObjects/Resources/ItemPorcessedRock"
+      "PrefabPath" : "Build/RockBlockPreview"
     },
     {
       "Build_Id" : 2,
@@ -22,7 +22,7 @@
       "ItemInfo" : "중급 생활에 이용될 철",
       "NeedItem" : "가공된 철",
       "NeedCost" : 1,
-      "SoPath" : "ScriptableObjects/Resources/ItemPorcessedIron"
+      "PrefabPath" : "Build/IronBlockPreview"
     },
     {
       "Build_Id" : 3,
@@ -30,7 +30,7 @@
       "ItemInfo" : "고급 생활에 이용될 금",
       "NeedItem" : "가공된 금",
       "NeedCost" : 1,
-      "SoPath" : "ScriptableObjects/Resources/ItemProcessedGold"	
+      "PrefabPath" : "Build/GoldBlockPreview"	
     }
   ]
 }

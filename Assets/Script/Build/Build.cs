@@ -74,7 +74,7 @@ public class Build : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Wall"))
+        if (other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Resources"))
         {
             inWallTrigger = true;
             GetComponent<MeshRenderer>().material.color = Color.red;

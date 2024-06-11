@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3119268426348717065}
   m_Layer: 9
   m_Name: Rock
-  m_TagString: Untagged
+  m_TagString: Resources
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -121,6 +121,7 @@ MonoBehaviour:
   - {fileID: 1300155592757022554, guid: d16a6f20a18231649814d6c8164481dd, type: 3}
   dropHeight: 2
   MaxHP: 50
+  resourceType: 0
 --- !u!1001 &1223908710735588395
 PrefabInstance:
   m_ObjectHideFlags: 0

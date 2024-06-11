@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 596410064095209460}
   - component: {fileID: -4917193260564959633}
   m_Layer: 0
-  m_Name: WallPreview
+  m_Name: WoodBlockPreview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

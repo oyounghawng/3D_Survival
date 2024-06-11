@@ -92,7 +92,7 @@ public class UI_BuildSlot : UI_Base
         }
         */
         //ฐวรเ
-        GameObject go = Managers.Resource.Instantiate("Build/WallPreview");
+        GameObject go = Managers.Resource.Instantiate(data.PrefabPath);
         Color color = go.GetComponent<MeshRenderer>().material.color;
         go.GetComponent<MeshRenderer>().material.color = new Color(color.r, color.g, color.b, 0.5f);
         go.transform.position = Managers.Object.Player.transform.position;
