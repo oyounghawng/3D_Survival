@@ -7,6 +7,7 @@ public class Define : MonoBehaviour
     public enum SceneType
     {
         Unknown,
+        TitleScene,
         MainScene,
     }
     public enum Sound

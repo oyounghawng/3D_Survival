@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainScene : BaseScene
+public class TileScene : BaseScene
 {
     protected override void Init()
     {
         base.Init();
 
-        SceneType = Define.SceneType.MainScene;
+        SceneType = Define.SceneType.TitleScene;
         StartCoroutine(CoWaitLoad());
     }
 
@@ -17,9 +17,7 @@ public class MainScene : BaseScene
         while (Managers.Data.Loaded() == false)
             yield return null;
 
-        Managers.UI.ShowSceneUI<UI_HUD>();
-        Managers.Object.SpawnPlayer();
-        Managers.Sound.Play(Define.Sound.Bgm, "Bgm/MainSceneBGM", 0.5f);
+        Managers.Sound.Play(Define.Sound.Bgm, "Bgm/TitleSceneBGM", 0.5f);
 
     }
     public override void Clear()
