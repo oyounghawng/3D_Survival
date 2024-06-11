@@ -9,7 +9,6 @@ public class PlayerBehaviour : EntityBehaviour
     private UI_Conditions conditions;
     private Animator animator;
 
-    // ���Ŀ� ������ ���̺��� �̿��ؼ� �����ϴ���, ���� csv�� json���� �����ϴ� ��� ã�ƺ��� �ҵ�.
     [Header("JumpState")]
     [SerializeField][Range(0f, 10f)] private float jumpPower = 5f;
     [SerializeField][Range(0f, 2f)] private float jumpRayLength = 1.2f;

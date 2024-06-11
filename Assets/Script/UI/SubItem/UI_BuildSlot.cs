@@ -44,7 +44,7 @@ public class UI_BuildSlot : UI_Base
     {
         if (data == null)
             return;
-        /*
+
         UI_ItemSlot[] slots = Managers.UI.FindPopup<UI_Inventory>().slots;
         string NeedItem = data.NeedItem;
         int NeedCost = data.NeedCost;
@@ -90,7 +90,8 @@ public class UI_BuildSlot : UI_Base
                 break;
             }
         }
-        */
+        
+
         //ฐวรเ
         GameObject go = Managers.Resource.Instantiate(data.PrefabPath);
         Color color = go.GetComponent<MeshRenderer>().material.color;

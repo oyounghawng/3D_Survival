@@ -16,7 +16,7 @@ MonoBehaviour:
   name: Apple
   desc: "\uB098 \uB3C5\uC788\uC5B4!"
   type: 2
-  icon: {fileID: 21300000, guid: d4b87fa4adc3b064189e130e9f3cd6ab, type: 3}
+  icon: {fileID: 21300000, guid: 028868d12a6737a4589e626c43c8405c, type: 3}
   prefab: {fileID: 616881902030250469, guid: 4e7bf04e14a5e8f40970bde628ec4576, type: 3}
   canStack: 1
   maxStackAmount: 12

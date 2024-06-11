@@ -31,6 +31,22 @@
       "NeedItem" : ["금","",""],
       "NeedCost" : [1,0,0],
       "SoPath" : "ScriptableObjects/Resources/ItemProcessedGold"	
+    },
+    {
+      "Craft_Id" : 4,
+      "ItemName" : "도끼",
+      "ItemInfo" : "채집에 사용되는 도끼",
+      "NeedItem" : ["나무","돌",""],
+      "NeedCost" : [1,1,0],
+      "SoPath" : "ScriptableObjects/Tools/ItemAx"	
+    },
+    {
+      "Craft_Id" : 5,
+      "ItemName" : "엑스칼리버",
+      "ItemInfo" : "전투에 사용되는 칼",
+      "NeedItem" : ["나무","철",""],
+      "NeedCost" : [1,1,0],
+      "SoPath" : "ScriptableObjects/Weapon/ItemExcalib"	
     }
   ]
 }

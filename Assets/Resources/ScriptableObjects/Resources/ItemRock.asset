@@ -16,7 +16,7 @@ MonoBehaviour:
   name: "\uB3CC"
   desc: "\uAC00\uACF5\uC774\uC548\uB41C \uB3CC"
   type: 1
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: e61976ceaf6919c47853f5a7ea09288b, type: 3}
   prefab: {fileID: 6359112800851457702, guid: e47d9cd7ebd50f44bb95ccb5d2ecad9a, type: 3}
   canStack: 1
   maxStackAmount: 12

@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class Resource : MonoBehaviour, IDamagable
 {
@@ -19,7 +17,7 @@ public class Resource : MonoBehaviour, IDamagable
     public void Damaged(float damage)
     {
         //Debug.Log("damaged");
-        if(damage <= 0)
+        if (damage <= 0)
         {
             return;
         }
@@ -28,7 +26,7 @@ public class Resource : MonoBehaviour, IDamagable
 
         Instantiate(dropPrefabs[Random.Range(0, dropPrefabs.Count)], transform.position + Vector3.up * dropHeight, Quaternion.identity);
 
-        if(isDie())
+        if (isDie())
         {
             MapResourcesEditer.instace.spawnPos.Remove(this.gameObject);
             MapResourcesEditer.instace.ReGnerate(resourceType);
