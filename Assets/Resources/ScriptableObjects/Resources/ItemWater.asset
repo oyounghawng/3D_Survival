@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   name: Water
-  desc: "\uBAA9\uB9C8\uC746\uC744 \uCC44\uC6CC\uC904 \uC218 \uC788\uB2E4."
+  desc: "\uBAA9\uB9C8\uB984\uC744 \uCC44\uC6CC\uC904 \uC218 \uC788\uB2E4."
   type: 1
   icon: {fileID: 0}
   prefab: {fileID: 0}
