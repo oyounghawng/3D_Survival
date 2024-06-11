@@ -16,7 +16,7 @@ MonoBehaviour:
   name: "\uCCA0"
   desc: "\uAC00\uACF5\uC774\uC548\uB41C \uCCA0"
   type: 1
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 365d71fbda079b14393c1903f83e00f2, type: 3}
   prefab: {fileID: 1300155592757022554, guid: d16a6f20a18231649814d6c8164481dd, type: 3}
   canStack: 1
   maxStackAmount: 12

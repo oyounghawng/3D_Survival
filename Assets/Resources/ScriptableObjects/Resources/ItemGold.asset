@@ -16,7 +16,7 @@ MonoBehaviour:
   name: "\uAE08"
   desc: "\uAC00\uACF5\uC774\uC548\uB41C \uAE08"
   type: 1
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: d3453ba8180590e48b12efd551e52a7c, type: 3}
   prefab: {fileID: 7241001570075309664, guid: a94ad1f9e03af93488311829224a791e, type: 3}
   canStack: 1
   maxStackAmount: 12

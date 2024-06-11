@@ -1,0 +1,36 @@
+{
+  "buildItems": [
+    {
+      "Build_Id" : 0,
+      "ItemName" : "나무\n벽돌",
+      "ItemInfo" : "기초적인 생활에 이용될 나무막대기",
+      "NeedItem" : "가공된 나무",
+      "NeedCost" : 1,
+      "PrefabPath" : "Build/WoodBlockPreview"
+    },
+    {
+      "Build_Id" : 1,
+      "ItemName" : "돌\n벽돌",
+      "ItemInfo" : "기초적인 생활에 이용될 돌",
+      "NeedItem" : "가공된 돌",
+      "NeedCost" : 1,
+      "PrefabPath" : "Build/RockBlockPreview"
+    },
+    {
+      "Build_Id" : 2,
+      "ItemName" : "철\n벽돌",
+      "ItemInfo" : "중급 생활에 이용될 철",
+      "NeedItem" : "가공된 철",
+      "NeedCost" : 1,
+      "PrefabPath" : "Build/IronBlockPreview"
+    },
+    {
+      "Build_Id" : 3,
+      "ItemName" : "금\n벽돌",
+      "ItemInfo" : "고급 생활에 이용될 금",
+      "NeedItem" : "가공된 금",
+      "NeedCost" : 1,
+      "PrefabPath" : "Build/GoldBlockPreview"	
+    }
+  ]
+}

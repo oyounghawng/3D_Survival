@@ -100,10 +100,17 @@ public class UI_ItemInfo : UI_Popup
             case ItemType.Tool:
             case ItemType.Resource:
                 {
+                    if (item.name.Contains("가공된"))
+                    {
+                        SetBtn((int)Buttons.DropBtn, false);
+                    }
+                    else
+                        SetBtn((int)Buttons.DropBtn, true);
+
                     SetBtn((int)Buttons.UseBtn, false);
                     SetBtn((int)Buttons.EquipBtn, false);
                     SetBtn((int)Buttons.UnEquipBtn, false);
-                    SetBtn((int)Buttons.DropBtn, true);
+
 
                     GetText((int)Texts.ItemName).text = item.name + " [" + Enum.GetName(typeof(ItemType), item.type) + "]";
                     GetText((int)Texts.ItemDesc).text = item.desc;

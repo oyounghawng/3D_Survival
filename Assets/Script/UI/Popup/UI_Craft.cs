@@ -29,6 +29,13 @@ public class UI_Craft : UI_Popup
         Init();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Managers.UI.ClosePopupUI();
+        }
+    }
     public override void Init()
     {
         base.Init();
@@ -43,12 +50,6 @@ public class UI_Craft : UI_Popup
         GetText((int)Texts.ItemInfo).text = "";
 
         Transform transform = GetObject((int)GameObjects.NeedItemList).transform;
-
-        if (transform)
-        {
-            Debug.Log("ÀÖ¾î¿ë");
-        }
-
         int idx = 0;
         foreach (Transform child in transform)
         {
@@ -170,7 +171,8 @@ public class UI_Craft : UI_Popup
                 if (slots[j].item.name == NeedItem)
                 {
                     slots[j].quantity -= NeedCost;
-                    slots[j].Clear();
+                    if (slots[j].quantity <= 0)
+                        slots[j].Clear();
                     break;
                 }
             }
@@ -179,12 +181,5 @@ public class UI_Craft : UI_Popup
         Managers.UI.FindPopup<UI_Inventory>().AddCraftItem(item);
         Managers.UI.ClosePopupUI();
 
-    }
-
-    void OnCloseButton(PointerEventData evt)
-    {
-        if (Cursor.lockState != CursorLockMode.Locked)
-            Cursor.lockState = CursorLockMode.Locked;
-        Managers.UI.ClosePopupUI();
     }
 }

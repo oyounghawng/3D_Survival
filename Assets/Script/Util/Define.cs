@@ -25,7 +25,12 @@ public class Define : MonoBehaviour
         Drag,
         EndDrag
     }
-
+    public enum Resources
+    {
+        Rock,
+        Tree,
+        NPC,
+    }
     public enum LayerMask
     {
         Ground = 6,

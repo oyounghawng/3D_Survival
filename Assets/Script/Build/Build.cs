@@ -11,17 +11,24 @@ public class Build : MonoBehaviour
 
     public LayerMask layerMask;
     private bool canBuild = true;
+    private bool inWallTrigger = false;
+
+    Color basicColor;
+    private void Start()
+    {
+        basicColor = GetComponent<MeshRenderer>().material.color;
+    }
 
     void Update()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit, 100f, layerMask))
+        if (Physics.Raycast(ray, out hit, 20f, layerMask))
         {
             Vector3 SurfaceVec = hit.normal; // 보정치 필요
             Vector3 hitCubePos = Vector3.zero;
             Vector3 InstantiatedCubsPos = Vector3.zero;
-            /*
+
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Water"))
             {
                 GetComponent<MeshRenderer>().material.color = Color.red;
@@ -33,7 +40,13 @@ public class Build : MonoBehaviour
                 this.gameObject.transform.position = InstantiatedCubsPos;
                 return;
             }
-            */
+
+            if(!inWallTrigger)
+            {
+                GetComponent<MeshRenderer>().material.color = basicColor;
+                canBuild = true;
+            }
+
             if (hit.transform.CompareTag("Ground"))
             {
                 float height = GetComponent<BoxCollider>().size.y / 2f;
@@ -43,15 +56,13 @@ public class Build : MonoBehaviour
             }
             else if (hit.transform.CompareTag("Wall"))
             {
+                GetComponent<MeshRenderer>().material.color = basicColor;
                 canBuild = true;
-                GetComponent<MeshRenderer>().material.color = Color.gray;
                 SurfaceVec = hit.normal;
                 hitCubePos = hit.transform.position;
                 InstantiatedCubsPos = SurfaceVec + hitCubePos;
-                this.gameObject.transform.position = InstantiatedCubsPos;
             }
             this.gameObject.transform.position = InstantiatedCubsPos;
-
 
             if (Input.GetMouseButtonDown(0) && canBuild)
             {
@@ -63,15 +74,18 @@ public class Build : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Wall"))
+        if (other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Resources"))
         {
+            inWallTrigger = true;
             GetComponent<MeshRenderer>().material.color = Color.red;
             canBuild = false;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        GetComponent<MeshRenderer>().material.color = Color.gray;
+        inWallTrigger = false;
+        GetComponent<MeshRenderer>().material.color = basicColor;
         canBuild = true;
     }
 }
+    

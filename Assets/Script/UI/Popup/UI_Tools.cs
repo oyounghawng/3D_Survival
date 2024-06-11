@@ -17,7 +17,13 @@ public class UI_Tools : UI_Popup
     {
         Init();
     }
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Managers.UI.ClosePopupUI();
+        }
+    }
     public override void Init()
     {
         base.Init();
